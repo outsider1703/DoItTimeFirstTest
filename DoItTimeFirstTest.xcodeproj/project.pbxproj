@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA10109B24B146D1005328F0 /* ToDoBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10109A24B146D1005328F0 /* ToDoBarTableViewController.swift */; };
+		FA10109D24B147B7005328F0 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10109C24B147B7005328F0 /* ActivityTableViewCell.swift */; };
+		FA10109F24B1480E005328F0 /* AgendaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10109E24B1480E005328F0 /* AgendaCollectionViewController.swift */; };
+		FA3E20FE24B349F700E8F4CF /* AddActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E20FD24B349F700E8F4CF /* AddActivityTableViewCell.swift */; };
+		FA649B3824B4C69800117607 /* purposesActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA649B3724B4C69800117607 /* purposesActivity.swift */; };
 		FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */; };
 		FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */; };
 		FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D7124AA44630013A2D5 /* ViewController.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA10109A24B146D1005328F0 /* ToDoBarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoBarTableViewController.swift; sourceTree = "<group>"; };
+		FA10109C24B147B7005328F0 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
+		FA10109E24B1480E005328F0 /* AgendaCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCollectionViewController.swift; sourceTree = "<group>"; };
+		FA3E20FD24B349F700E8F4CF /* AddActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityTableViewCell.swift; sourceTree = "<group>"; };
+		FA649B3724B4C69800117607 /* purposesActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = purposesActivity.swift; sourceTree = "<group>"; };
 		FAB11D6A24AA44630013A2D5 /* DoItTimeFirstTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoItTimeFirstTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +47,68 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA649B3024B4C42D00117607 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FAB11D7324AA44630013A2D5 /* Main.storyboard */,
+				FAB11D7824AA44680013A2D5 /* LaunchScreen.storyboard */,
+			);
+			path = storyboards;
+			sourceTree = "<group>";
+		};
+		FA649B3124B4C47000117607 /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */,
+				FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */,
+			);
+			path = delegates;
+			sourceTree = "<group>";
+		};
+		FA649B3224B4C49C00117607 /* supportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FA649B3124B4C47000117607 /* delegates */,
+				FAB11D7624AA44680013A2D5 /* Assets.xcassets */,
+				FAB11D7B24AA44680013A2D5 /* Info.plist */,
+			);
+			path = supportingFiles;
+			sourceTree = "<group>";
+		};
+		FA649B3324B4C50300117607 /* ToDoBarTabelVC */ = {
+			isa = PBXGroup;
+			children = (
+				FA10109A24B146D1005328F0 /* ToDoBarTableViewController.swift */,
+				FA10109C24B147B7005328F0 /* ActivityTableViewCell.swift */,
+				FA3E20FD24B349F700E8F4CF /* AddActivityTableViewCell.swift */,
+			);
+			path = ToDoBarTabelVC;
+			sourceTree = "<group>";
+		};
+		FA649B3424B4C51800117607 /* AgendaCollectionVC */ = {
+			isa = PBXGroup;
+			children = (
+				FA10109E24B1480E005328F0 /* AgendaCollectionViewController.swift */,
+			);
+			path = AgendaCollectionVC;
+			sourceTree = "<group>";
+		};
+		FA649B3524B4C58200117607 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FAB11D7124AA44630013A2D5 /* ViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		FA649B3624B4C59D00117607 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA649B3724B4C69800117607 /* purposesActivity.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		FAB11D6124AA44630013A2D5 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +128,12 @@
 		FAB11D6C24AA44630013A2D5 /* DoItTimeFirstTest */ = {
 			isa = PBXGroup;
 			children = (
-				FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */,
-				FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */,
-				FAB11D7124AA44630013A2D5 /* ViewController.swift */,
-				FAB11D7324AA44630013A2D5 /* Main.storyboard */,
-				FAB11D7624AA44680013A2D5 /* Assets.xcassets */,
-				FAB11D7824AA44680013A2D5 /* LaunchScreen.storyboard */,
-				FAB11D7B24AA44680013A2D5 /* Info.plist */,
+				FA649B3524B4C58200117607 /* MainViewController */,
+				FA649B3324B4C50300117607 /* ToDoBarTabelVC */,
+				FA649B3424B4C51800117607 /* AgendaCollectionVC */,
+				FA649B3024B4C42D00117607 /* storyboards */,
+				FA649B3624B4C59D00117607 /* Models */,
+				FA649B3224B4C49C00117607 /* supportingFiles */,
 			);
 			path = DoItTimeFirstTest;
 			sourceTree = "<group>";
@@ -138,9 +209,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA10109F24B1480E005328F0 /* AgendaCollectionViewController.swift in Sources */,
 				FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */,
 				FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */,
+				FA10109D24B147B7005328F0 /* ActivityTableViewCell.swift in Sources */,
+				FA3E20FE24B349F700E8F4CF /* AddActivityTableViewCell.swift in Sources */,
+				FA10109B24B146D1005328F0 /* ToDoBarTableViewController.swift in Sources */,
 				FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */,
+				FA649B3824B4C69800117607 /* purposesActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +361,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DoItTimeFirstTest/Info.plist;
+				INFOPLIST_FILE = DoItTimeFirstTest/supportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,7 +369,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = macbook.DoItTimeFirstTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,7 +378,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = DoItTimeFirstTest/Info.plist;
+				INFOPLIST_FILE = DoItTimeFirstTest/supportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +386,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = macbook.DoItTimeFirstTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
