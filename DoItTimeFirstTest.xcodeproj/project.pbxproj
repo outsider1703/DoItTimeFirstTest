@@ -12,6 +12,7 @@
 		FA10109F24B1480E005328F0 /* AgendaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10109E24B1480E005328F0 /* AgendaCollectionViewController.swift */; };
 		FA3E20FE24B349F700E8F4CF /* AddActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E20FD24B349F700E8F4CF /* AddActivityTableViewCell.swift */; };
 		FA649B3824B4C69800117607 /* purposesActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA649B3724B4C69800117607 /* purposesActivity.swift */; };
+		FA649B3B24B5F09F00117607 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA649B3A24B5F09F00117607 /* InformationViewController.swift */; };
 		FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */; };
 		FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */; };
 		FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D7124AA44630013A2D5 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 		FA10109E24B1480E005328F0 /* AgendaCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaCollectionViewController.swift; sourceTree = "<group>"; };
 		FA3E20FD24B349F700E8F4CF /* AddActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityTableViewCell.swift; sourceTree = "<group>"; };
 		FA649B3724B4C69800117607 /* purposesActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = purposesActivity.swift; sourceTree = "<group>"; };
+		FA649B3A24B5F09F00117607 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		FAB11D6A24AA44630013A2D5 /* DoItTimeFirstTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoItTimeFirstTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				FA10109A24B146D1005328F0 /* ToDoBarTableViewController.swift */,
 				FA10109C24B147B7005328F0 /* ActivityTableViewCell.swift */,
 				FA3E20FD24B349F700E8F4CF /* AddActivityTableViewCell.swift */,
+				FA649B3924B5F05F00117607 /* InformationVC */,
 			);
 			path = ToDoBarTabelVC;
 			sourceTree = "<group>";
@@ -107,6 +110,14 @@
 				FA649B3724B4C69800117607 /* purposesActivity.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FA649B3924B5F05F00117607 /* InformationVC */ = {
+			isa = PBXGroup;
+			children = (
+				FA649B3A24B5F09F00117607 /* InformationViewController.swift */,
+			);
+			path = InformationVC;
 			sourceTree = "<group>";
 		};
 		FAB11D6124AA44630013A2D5 = {
@@ -217,6 +228,7 @@
 				FA10109B24B146D1005328F0 /* ToDoBarTableViewController.swift in Sources */,
 				FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */,
 				FA649B3824B4C69800117607 /* purposesActivity.swift in Sources */,
+				FA649B3B24B5F09F00117607 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

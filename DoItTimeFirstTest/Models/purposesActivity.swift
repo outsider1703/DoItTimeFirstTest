@@ -7,6 +7,6 @@
 //
 
 struct Purpose {
-    let name: String
-    let time: Int
+    let name: String?
+    let time: Int?
 }

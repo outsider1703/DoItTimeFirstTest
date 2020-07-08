@@ -10,7 +10,7 @@ import UIKit
 
 class ToDoBarTableViewController: UITableViewController {
     
-    let purposes: [Purpose] = []
+    var purposes: [Purpose] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +20,81 @@ class ToDoBarTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        purposes.count
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        CGFloat(exactly: 65)!
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ActivityTableViewCell
         
-        cell.nameActivityLabel.text = "test: \(indexPath)"
+        cell.nameActivityLabel.text = purposes[indexPath.row].name
         
         return cell
     }
-}
-
-extension ToDoBarTableViewController {
     
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let archiveAction = swipeForArchive(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [archiveAction])
+    }
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let infoAction = swipeForInformation(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [infoAction])
+    }
 }
 
+//MARK: - Private Function
+extension ToDoBarTableViewController {
+    private func reloadRows() {
+        let indexPath = IndexPath(row: purposes.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    private func swipeForArchive(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Archive") { (_, _, completion) in
+            completion(true)
+        }
+        return action
+    }
+    
+    private func swipeForInformation(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Info") { (_, _, completion) in
+            self.goToInformationVC(indexPath)
+            completion(true)
+        }
+        return action
+    }
+    
+    private func goToInformationVC(_ indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToInfo", sender: indexPath)
+    }
+}
+
+//MARK: - Alerts
+extension ToDoBarTableViewController {
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Achieve This", style: .default) { _ in
+            guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
+            let purposesTask = Purpose(name: task, time: nil)
+            self.purposes.append(purposesTask)
+            
+            self.reloadRows()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        alert.addTextField()
+        
+        present(alert, animated: true)
+    }
+}
+//MARK: - Navigation Item
 extension ToDoBarTableViewController {
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
@@ -45,6 +103,7 @@ extension ToDoBarTableViewController {
     }
     
     @objc private func addTask() {
-        
+        showAlert(title: "New Goals")
     }
 }
+
