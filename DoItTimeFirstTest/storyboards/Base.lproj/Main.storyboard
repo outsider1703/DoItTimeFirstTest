@@ -32,16 +32,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewLayout key="collectionViewLayout" id="wo7-oR-rjE"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Zjl-Dy-IsV">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="1iA-Op-Zo1">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="1iA-Op-Zo1" customClass="DayInAgendaCollectionViewCell" customModule="DoItTimeFirstTest" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="118" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Z7J-GF-tmY">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="118" height="92"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="customSize" width="118" height="92"/>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -53,7 +59,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvv-SL-sNB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="904"/>
+            <point key="canvasLocation" x="1540" y="903.59820089955031"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -267,25 +273,6 @@
                                     <outlet property="timeLabel" destination="Yom-49-huH" id="Ca8-vj-XTh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellAdd" id="Cia-90-aVG" customClass="AddActivityTableViewCell" customModule="DoItTimeFirstTest" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="90" width="375" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cia-90-aVG" id="hoo-iD-qyu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYo-E0-TML">
-                                            <rect key="frame" x="158.5" y="4" width="58" height="36"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="rYo-E0-TML" firstAttribute="centerX" secondItem="hoo-iD-qyu" secondAttribute="centerX" id="C8k-w8-KE7"/>
-                                        <constraint firstItem="rYo-E0-TML" firstAttribute="centerY" secondItem="hoo-iD-qyu" secondAttribute="centerY" id="LGC-5e-BYc"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <connections>
@@ -309,14 +296,29 @@
                     <view key="view" contentMode="scaleToFill" id="SC1-sH-rAw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWi-UG-TW4">
+                                <rect key="frame" x="152" y="305.5" width="71" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dWi-UG-TW4" firstAttribute="centerY" secondItem="SC1-sH-rAw" secondAttribute="centerY" id="Ax3-Bq-JaJ"/>
+                            <constraint firstItem="dWi-UG-TW4" firstAttribute="centerX" secondItem="SC1-sH-rAw" secondAttribute="centerX" id="R2X-Py-6x4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RZH-Qg-Ftf"/>
                     </view>
                     <navigationItem key="navigationItem" id="q5c-7r-R9b"/>
+                    <connections>
+                        <outlet property="testNameInfoLabel" destination="dWi-UG-TW4" id="jGm-qf-4Eq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t53-rg-DAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2668" y="135"/>
+            <point key="canvasLocation" x="2668" y="134.48275862068968"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hR2-hE-b54">

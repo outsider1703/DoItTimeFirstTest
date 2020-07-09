@@ -9,10 +9,15 @@
 import UIKit
 
 class InformationViewController: UIViewController {
-
+    
+    var testInfo: String!
+    
+    @IBOutlet var testNameInfoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        testNameInfoLabel.text = testInfo
     }
     
 

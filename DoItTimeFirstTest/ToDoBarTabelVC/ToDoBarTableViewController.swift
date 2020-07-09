@@ -39,6 +39,7 @@ class ToDoBarTableViewController: UITableViewController {
         let archiveAction = swipeForArchive(at: indexPath)
         return UISwipeActionsConfiguration(actions: [archiveAction])
     }
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let infoAction = swipeForInformation(at: indexPath)
         return UISwipeActionsConfiguration(actions: [infoAction])
@@ -56,6 +57,8 @@ extension ToDoBarTableViewController {
         let action = UIContextualAction(style: .normal, title: "Archive") { (_, _, completion) in
             completion(true)
         }
+        action.image = UIImage(systemName: "archivebox")
+        action.backgroundColor = .systemYellow
         return action
     }
     
@@ -64,11 +67,24 @@ extension ToDoBarTableViewController {
             self.goToInformationVC(indexPath)
             completion(true)
         }
+        action.image = UIImage(systemName: "info")
+        action.backgroundColor = .systemGreen
         return action
     }
     
     private func goToInformationVC(_ indexPath: IndexPath) {
         performSegue(withIdentifier: "goToInfo", sender: indexPath)
+    }
+}
+
+//MARK: - Navigation
+extension ToDoBarTableViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToInfo" {
+            let testInfo = segue.destination as? InformationViewController
+            let indexPath = IndexPath(row: purposes.count - 1, section: 0)
+            testInfo?.testInfo = purposes[indexPath.row].name
+        }
     }
 }
 
