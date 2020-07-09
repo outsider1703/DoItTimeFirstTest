@@ -69,19 +69,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAE-6X-xna">
-                                <rect key="frame" x="16" y="174" width="343" height="36"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VL-Jn-wrG">
                                 <rect key="frame" x="16" y="20" width="80" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,34 +115,19 @@
                                     <segue destination="vXr-B0-5WW" kind="show" id="Krj-G0-0Ei"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clD-2Q-JRa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfy-es-9Cm">
                                 <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="0cQ-3D-QbU"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="xvC-nd-OMQ"/>
+                                    <constraint firstAttribute="height" constant="150" id="GJ1-Wy-paw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="cHK-Vp-tAw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startTimeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qpP-7v-Szc"/>
-                                    <segue destination="HsT-yh-kx0" kind="presentation" id="Gp8-DF-lJs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bv-iN-y2Q">
-                                <rect key="frame" x="113" y="433" width="156" height="84"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="84" id="fs0-bM-DgO"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="156" id="iXf-7o-UCJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopTimerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ga6-l8-zM2"/>
+                                    <segue destination="HsT-yh-kx0" kind="presentation" id="bfV-Cz-NyF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -164,19 +136,13 @@
                             <constraint firstItem="p9R-c5-iHz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2WC-cD-u1N"/>
                             <constraint firstItem="9VL-Jn-wrG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="3vk-Ob-Xh4"/>
                             <constraint firstItem="MFn-Zo-8r4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="p9R-c5-iHz" secondAttribute="trailing" constant="183" id="5pw-xc-66y"/>
-                            <constraint firstItem="oAE-6X-xna" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="77V-So-abD"/>
+                            <constraint firstItem="gfy-es-9Cm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dx6-AN-bNx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="B5b-8J-ugc" secondAttribute="trailing" id="E1b-Rc-DAp"/>
-                            <constraint firstItem="8Bv-iN-y2Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="113" id="Fii-xa-5S8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Bv-iN-y2Q" secondAttribute="trailing" constant="106" id="PjW-N7-W94"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="p9R-c5-iHz" secondAttribute="bottom" constant="20" id="Rwr-bJ-aAB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oAE-6X-xna" secondAttribute="trailing" constant="16" id="WKU-lo-PXq"/>
-                            <constraint firstItem="clD-2Q-JRa" firstAttribute="top" secondItem="oAE-6X-xna" secondAttribute="bottom" constant="48.5" id="WgC-10-wa7"/>
+                            <constraint firstItem="gfy-es-9Cm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dEg-ec-Y4f"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="B5b-8J-ugc" secondAttribute="trailing" constant="16" id="dsA-cN-MFk"/>
-                            <constraint firstItem="8Bv-iN-y2Q" firstAttribute="top" secondItem="clD-2Q-JRa" secondAttribute="bottom" constant="24.5" id="iAe-wL-T6o"/>
                             <constraint firstItem="9VL-Jn-wrG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="jim-Hk-QcY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MFn-Zo-8r4" secondAttribute="bottom" constant="20" id="meZ-fb-J0o"/>
-                            <constraint firstItem="clD-2Q-JRa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nZ2-Ed-nhu"/>
-                            <constraint firstItem="clD-2Q-JRa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nvc-RO-xAB"/>
                             <constraint firstItem="B5b-8J-ugc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="osP-Xd-VWf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MFn-Zo-8r4" secondAttribute="trailing" id="tpH-8a-mI1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MFn-Zo-8r4" secondAttribute="trailing" constant="16" id="yWI-Wz-3T1"/>
@@ -185,12 +151,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="startButton" destination="clD-2Q-JRa" id="mie-ov-BqT"/>
-                        <outlet property="timeLabel" destination="oAE-6X-xna" id="JBg-Gn-wYM"/>
                         <outletCollection property="cornerRadiusButtons" destination="B5b-8J-ugc" collectionClass="NSMutableArray" id="r0x-g7-OiG"/>
                         <outletCollection property="cornerRadiusButtons" destination="9VL-Jn-wrG" collectionClass="NSMutableArray" id="BzC-Du-MkK"/>
                         <outletCollection property="cornerRadiusButtons" destination="MFn-Zo-8r4" collectionClass="NSMutableArray" id="hmS-il-AYr"/>
                         <outletCollection property="cornerRadiusButtons" destination="p9R-c5-iHz" collectionClass="NSMutableArray" id="z5L-kQ-31G"/>
+                        <outletCollection property="cornerRadiusButtons" destination="gfy-es-9Cm" collectionClass="NSMutableArray" id="Tnz-2g-bQR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
