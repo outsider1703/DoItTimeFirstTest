@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ToDoBarTableViewController: UITableViewController {
     
@@ -63,7 +64,7 @@ extension ToDoBarTableViewController {
     }
     
     private func swipeForInformation(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .normal, title: "Info") { (_, _, completion) in
+        let action = UIContextualAction(style: .normal, title: "Info") { [unowned self] (_, _, completion) in
             self.goToInformationVC(indexPath)
             completion(true)
         }
@@ -81,9 +82,11 @@ extension ToDoBarTableViewController {
 extension ToDoBarTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToInfo" {
-            let testInfo = segue.destination as? InformationViewController
+            let testInfo = segue.destination as! InformationViewController
+            //            let cell = sender as? ActivityTableViewCell
+            //            testInfo.testInfo = cell?.nameActivityLabel.text
             let indexPath = IndexPath(row: purposes.count - 1, section: 0)
-            testInfo?.testInfo = purposes[indexPath.row].name
+            testInfo.testInfo = purposes[indexPath.row].name
         }
     }
 }
@@ -93,10 +96,14 @@ extension ToDoBarTableViewController {
     private func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Achieve This", style: .default) { _ in
+        let saveAction = UIAlertAction(title: "Achieve This", style: .default) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
-            let purposesTask = Purpose(name: task, time: nil)
-            self.purposes.append(purposesTask)
+            
+            let manager = CoreDataManager.shared
+            manager.save(name: task, time: 0)
+            
+//            let purposesTask = Purpose(name: task, time: 0)
+//            self.purposes.append(purposesTask)
             
             self.reloadRows()
         }
