@@ -13,6 +13,10 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     private init() {}
     
+    private var viewContext: NSManagedObjectContext {
+        persistentContainer.viewContext
+    }
+    
     var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "SampleData")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -24,10 +28,9 @@ class CoreDataManager {
     }()
     
     func saveContext() {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
+        if viewContext.hasChanges {
             do {
-                try context.save()
+                try viewContext.save()
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -39,25 +42,31 @@ class CoreDataManager {
 //MARK: - Core Data Function
 extension CoreDataManager {
     
-    func save(name: String, time: Int) {
-        
+    func getAnObject() -> Purpose? {
         guard let entityDescription = NSEntityDescription.entity(
             forEntityName: "Purpose",
-            in: persistentContainer.viewContext
-            ) else { return }
+            in: viewContext
+            ) else { return nil }
         guard let task = NSManagedObject(
             entity: entityDescription,
-            insertInto: persistentContainer.viewContext
-            ) as? Purpose else { return }
+            insertInto: viewContext
+            ) as? Purpose else { return nil }
         
-        task.name = name
-        task.time = Int64(time) 
-        
+        return task
+    }
+    
+    func save(_ newTask: Purpose) {
         do {
-            try persistentContainer.viewContext.save()
+            try viewContext.save()
         } catch let error {
             print(error.localizedDescription)
         }
+        saveContext()
+    }
+    
+    func delete(_ deleteTask: Purpose) {
+        viewContext.delete(deleteTask)
+        saveContext()
     }
     
     func fetchData() -> [Purpose] {
@@ -65,7 +74,7 @@ extension CoreDataManager {
         var purposes = [Purpose]()
         
         do {
-          purposes = try persistentContainer.viewContext.fetch(fetchRequest)
+            purposes = try viewContext.fetch(fetchRequest)
         } catch let error {
             print(error)
         }

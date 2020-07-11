@@ -17,6 +17,7 @@ class ToDoBarTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        purposes = CoreDataManager.shared.fetchData()
     }
     
     // MARK: - Table view data source
@@ -49,13 +50,19 @@ class ToDoBarTableViewController: UITableViewController {
 
 //MARK: - Private Function
 extension ToDoBarTableViewController {
-    private func reloadRows() {
+    private func reloadRowsAfterInsert() {
         let indexPath = IndexPath(row: purposes.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
     private func swipeForArchive(at indexPath: IndexPath) -> UIContextualAction {
         let action = UIContextualAction(style: .normal, title: "Archive") { (_, _, completion) in
+            
+            let task = self.purposes[indexPath.row]
+            self.purposes.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            CoreDataManager.shared.delete(task)
+            
             completion(true)
         }
         action.image = UIImage(systemName: "archivebox")
@@ -99,13 +106,13 @@ extension ToDoBarTableViewController {
         let saveAction = UIAlertAction(title: "Achieve This", style: .default) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
             
-            let manager = CoreDataManager.shared
-            manager.save(name: task, time: 0)
+            let taskObjectCore = CoreDataManager.shared.getAnObject()
+            taskObjectCore?.name = task
             
-//            let purposesTask = Purpose(name: task, time: 0)
-//            self.purposes.append(purposesTask)
+            self.purposes.append(taskObjectCore!)
+            self.reloadRowsAfterInsert()
             
-            self.reloadRows()
+            CoreDataManager.shared.save(taskObjectCore!)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
@@ -117,6 +124,7 @@ extension ToDoBarTableViewController {
         present(alert, animated: true)
     }
 }
+
 //MARK: - Navigation Item
 extension ToDoBarTableViewController {
     private func setupNavigationBar() {
