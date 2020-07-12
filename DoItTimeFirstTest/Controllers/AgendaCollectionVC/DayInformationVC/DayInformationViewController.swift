@@ -8,11 +8,10 @@
 
 import UIKit
 
-class DayInformationViewController: ViewController {
+class DayInformationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
 

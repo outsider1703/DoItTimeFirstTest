@@ -11,12 +11,21 @@ import UIKit
 class ActivityTableViewCell: UITableViewCell {
     
     var timer: Timer?
-    var timerCount = 0
+    var timerCount = 0 {
+        didSet {
+            if timerCount < 60 {
+                timeLabel.text = String(timerCount)
+            } else {
+                let minuts = timerCount / 60
+                timeLabel.text = "\(minuts):\(timerCount % 60)"
+            }
+        }
+    }
     
-    @IBOutlet var startButton: UIButton!
-    @IBOutlet var stopButton: UIButton!
-    @IBOutlet var timeLabel: UILabel!
-    @IBOutlet var nameActivityLabel: UILabel!
+    @IBOutlet private var startButton: UIButton!
+    @IBOutlet private var stopButton: UIButton!
+    @IBOutlet private var timeLabel: UILabel!
+    @IBOutlet private var nameActivityLabel: UILabel!
     
     
     override func awakeFromNib() {
@@ -25,7 +34,11 @@ class ActivityTableViewCell: UITableViewCell {
         startButton.isHidden = false
         stopButton.isHidden = true
     }
-    
+
+    override func prepareForReuse() {
+        nameActivityLabel.text = nil
+    }
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -42,16 +55,15 @@ class ActivityTableViewCell: UITableViewCell {
                                      repeats: true)
         
     }
+
+    func prepare(text: String?) {
+        nameActivityLabel.text = text
+    }
     
     @objc func updateTimer() {
         timerCount += 1
-        let minuts = timerCount / 60
         
-        if timerCount < 60 {
-            timeLabel.text = String(timerCount)
-        } else {
-            timeLabel.text = "\(minuts):\(timerCount % 60)"
-        }
+
     }
     
     
@@ -62,6 +74,5 @@ class ActivityTableViewCell: UITableViewCell {
         timer?.invalidate()
         timer = nil
         timerCount = 0
-        timeLabel.text = "0"
     }
 }

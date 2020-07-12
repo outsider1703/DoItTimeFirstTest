@@ -26,17 +26,16 @@ class ToDoBarTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        CGFloat(exactly: 65)!
+        65
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ActivityTableViewCell
         
-        cell.nameActivityLabel.text = purposes[indexPath.row].name
-        
+        cell.prepare(text: purposes[indexPath.row].name)
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let archiveAction = swipeForArchive(at: indexPath)
         return UISwipeActionsConfiguration(actions: [archiveAction])

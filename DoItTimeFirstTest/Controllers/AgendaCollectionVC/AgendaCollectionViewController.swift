@@ -8,10 +8,25 @@
 
 import UIKit
 
+enum periodType {
+    case week, mounth, year
+    var number: Int {
+        switch self {
+        case .week:
+            return 7
+        case .mounth:
+            return 30
+        case .year:
+            return 12
+        }
+    }
+}
 
 class AgendaViewController: UIViewController {
     
     @IBOutlet var agendaCollection: UICollectionView!
+
+    fileprivate var collectionData: periodType = .week
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +40,7 @@ extension AgendaViewController : UICollectionViewDataSource, UICollectionViewDel
     // MARK: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        7
+        collectionData.number
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

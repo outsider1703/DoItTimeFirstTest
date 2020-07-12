@@ -10,18 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var cornerRadiusButtons: [UIButton]?
+    @IBOutlet var cornerRadiusButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         settingCornerRadiusForButtons()
     }
     
     private func settingCornerRadiusForButtons() {
         guard let buttons = cornerRadiusButtons else { return }
-        for button in buttons {
+        buttons.forEach({ button in
             button.layer.cornerRadius = button.frame.width / 2
-        }
+        })
     }
 }
