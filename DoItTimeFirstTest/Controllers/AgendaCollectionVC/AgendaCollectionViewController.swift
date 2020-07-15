@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum periodType {
+enum PeriodType: Int {
     case week, mounth, year
     var number: Int {
         switch self {
@@ -26,13 +26,17 @@ class AgendaViewController: UIViewController {
     
     @IBOutlet var agendaCollection: UICollectionView!
 
-    fileprivate var collectionData: periodType = .week
+    fileprivate var collectionData: PeriodType = .week
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-
+    @IBAction func dateFormatSwitching(_ sender: UISegmentedControl) {
+        collectionData = PeriodType(rawValue: sender.selectedSegmentIndex) ?? .week
+        agendaCollection.reloadData()
+    }
 }
 
 extension AgendaViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
@@ -51,7 +55,7 @@ extension AgendaViewController : UICollectionViewDataSource, UICollectionViewDel
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemPerRow: CGFloat = 3
+        let itemPerRow: CGFloat = 2
         let paddingWidth = 20 * (itemPerRow + 1)
         let availableWidth = collectionView.frame.width - paddingWidth
         let widthPerItem = availableWidth / itemPerRow

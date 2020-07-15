@@ -17,6 +17,8 @@ class ToDoBarTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         setupNavigationBar()
         purposes = CoreDataManager.shared.fetchData()
     }
