@@ -10,14 +10,14 @@ import UIKit
 
 class InformationViewController: UIViewController {
     
-    var testInfo: String!
+    var swipeCellInfo: Purpose!
     
     @IBOutlet var testNameInfoLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        testNameInfoLabel.text = testInfo
+        testNameInfoLabel.text = String(swipeCellInfo.time)
     }
     
 

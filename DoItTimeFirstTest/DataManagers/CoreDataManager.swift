@@ -80,4 +80,10 @@ extension CoreDataManager {
         }
         return purposes
     }
+    
+    func updateTime(_ task: Purpose, newTime: Int64) {
+        task.time += newTime
+        saveContext()
+    }
+
 }

@@ -12,6 +12,7 @@ import CoreData
 class ToDoBarTableViewController: UITableViewController {
     
     var purposes: [Purpose] = []
+    var cellByIndex: Purpose!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +22,9 @@ class ToDoBarTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        purposes.count
-    }
+   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          purposes.count
+      }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         65
@@ -32,7 +33,9 @@ class ToDoBarTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ActivityTableViewCell
         
-        cell.prepare(text: purposes[indexPath.row].name)
+        cell.prepareNameForCell(text: purposes[indexPath.row].name)
+        cell.prepareIndexForTag(index: indexPath.row)
+        
         return cell
     }
 
@@ -42,6 +45,7 @@ class ToDoBarTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        cellByIndex = purposes[indexPath.row]
         let infoAction = swipeForInformation(at: indexPath)
         return UISwipeActionsConfiguration(actions: [infoAction])
     }
@@ -88,12 +92,9 @@ extension ToDoBarTableViewController {
 extension ToDoBarTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToInfo" {
-            let testInfo = segue.destination as! InformationViewController
-            //            let cell = sender as? ActivityTableViewCell
-            //            testInfo.testInfo = cell?.nameActivityLabel.text
-            let indexPath = IndexPath(row: purposes.count - 1, section: 0)
-            testInfo.testInfo = purposes[indexPath.row].name
-        }
+            let infoVC = segue.destination as! InformationViewController
+            infoVC.swipeCellInfo = cellByIndex
+        }        
     }
 }
 
@@ -101,25 +102,25 @@ extension ToDoBarTableViewController {
 extension ToDoBarTableViewController {
     private func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        
+
         let saveAction = UIAlertAction(title: "Achieve This", style: .default) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
-            
+
             let taskObjectCore = CoreDataManager.shared.getAnObject()
             taskObjectCore?.name = task
-            
+
             self.purposes.append(taskObjectCore!)
             self.reloadRowsAfterInsert()
-            
+
             CoreDataManager.shared.save(taskObjectCore!)
         }
-        
+
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-        
+
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         alert.addTextField()
-        
+
         present(alert, animated: true)
     }
 }
@@ -131,7 +132,7 @@ extension ToDoBarTableViewController {
                                                             target: self,
                                                             action: #selector(addTask))
     }
-    
+
     @objc private func addTask() {
         showAlert(title: "New Goals")
     }
