@@ -2,9 +2,15 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Purpose" representedClassName="Purpose" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="time" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TimeData" inverseName="purpose" inverseEntity="TimeData"/>
+    </entity>
+    <entity name="TimeData" representedClassName="TimeData" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="time" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="purpose" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Purpose" inverseName="time" inverseEntity="Purpose"/>
     </entity>
     <elements>
-        <element name="Purpose" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Purpose" positionX="185.2734375" positionY="21.9375" width="128" height="73"/>
+        <element name="TimeData" positionX="-13.73046875" positionY="39.62890625" width="128" height="88"/>
     </elements>
 </model>

@@ -10,25 +10,54 @@ import UIKit
 
 class InformationViewController: UIViewController {
     
-    var swipeCellInfo: Purpose!
-    
     @IBOutlet var testNameInfoLabel: UILabel!
+    
+    var swipeCellInfo: Purpose!
+    var allTime: Int64 {
+        (getAllTime() ?? 0) / 60
+    }
+    
+//    var testData: String {
+//        getDate() ?? ""
+//    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        testNameInfoLabel.text = String(swipeCellInfo.time)
+        navigationItem.title = swipeCellInfo.name
+        testNameInfoLabel.text = "All Time: \(allTime) minutes"
+    }
+}
+
+extension InformationViewController {
+    
+    private func getAllTime() -> Int64? {
+        var allTime: Int64 = 0
+        guard let time = swipeCellInfo.time else { return nil }
+        for object in time {
+            let timeDataOmbject = object as? TimeData
+            allTime += timeDataOmbject?.time ?? 0
+        }
+        return allTime
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+//    private func getDate() -> String? {
+//        var textDate: String = ""
+//
+//        let calendar = Calendar.current
+//        let dateFormater = DateFormatter()
+//        dateFormater.dateFormat = "EEE, MMM d, ''yy"
+//
+//        guard let time = swipeCellInfo.time else { return nil }
+//        for object in time {
+//            let timeDataOmbject = object as? TimeData
+//
+//            let dateComponents = calendar.dateComponents([.day, .month, .year], from: (timeDataOmbject?.date)!)
+//            let ttextDate = calendar.date(from: dateComponents)
+//            let testDay = dateFormater.string(from: ttextDate!)
+//
+//            textDate += testDay
+//        }
+//        return textDate
+//    }
 }

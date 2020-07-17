@@ -16,6 +16,7 @@
 		FA649B4524B875C600117607 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA649B4424B875C600117607 /* CoreData.framework */; };
 		FA649B4824B8763200117607 /* SampleData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA649B4624B8763200117607 /* SampleData.xcdatamodeld */; };
 		FA649B4A24B8774E00117607 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA649B4924B8774E00117607 /* CoreDataManager.swift */; };
+		FA76765A24C24D82002396FC /* GraphStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76765924C24D82002396FC /* GraphStatisticsVC.swift */; };
 		FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */; };
 		FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */; };
 		FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D7124AA44630013A2D5 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		FA649B4424B875C600117607 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA649B4724B8763200117607 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FA649B4924B8774E00117607 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FA76765924C24D82002396FC /* GraphStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphStatisticsVC.swift; sourceTree = "<group>"; };
 		FAB11D6A24AA44630013A2D5 /* DoItTimeFirstTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoItTimeFirstTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		FA649B4124B8531C00117607 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA76765824C24C00002396FC /* StatisticsControllers */,
 				FA649B3524B4C58200117607 /* MainViewController */,
 				FA649B3324B4C50300117607 /* ToDoBarTabelVC */,
 				FA649B3424B4C51800117607 /* AgendaCollectionVC */,
@@ -160,6 +163,14 @@
 				FA649B4424B875C600117607 /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA76765824C24C00002396FC /* StatisticsControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA76765924C24D82002396FC /* GraphStatisticsVC.swift */,
+			);
+			path = StatisticsControllers;
 			sourceTree = "<group>";
 		};
 		FAB11D6124AA44630013A2D5 = {
@@ -266,6 +277,7 @@
 				FA10109F24B1480E005328F0 /* AgendaCollectionViewController.swift in Sources */,
 				FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */,
 				FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */,
+				FA76765A24C24D82002396FC /* GraphStatisticsVC.swift in Sources */,
 				FA10109D24B147B7005328F0 /* ActivityTableViewCell.swift in Sources */,
 				FA10109B24B146D1005328F0 /* ToDoBarTableViewController.swift in Sources */,
 				FA649B4A24B8774E00117607 /* CoreDataManager.swift in Sources */,
