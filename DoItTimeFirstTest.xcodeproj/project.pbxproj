@@ -141,10 +141,10 @@
 		FA649B4124B8531C00117607 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA76765824C24C00002396FC /* StatisticsControllers */,
 				FA649B3524B4C58200117607 /* MainViewController */,
 				FA649B3324B4C50300117607 /* ToDoBarTabelVC */,
 				FA649B3424B4C51800117607 /* AgendaCollectionVC */,
+				FA76765824C24C00002396FC /* StatisticsControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

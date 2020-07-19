@@ -11,15 +11,31 @@
         <!--Item-->
         <scene sceneID="myi-Bk-WfW">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="vXr-B0-5WW" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="vXr-B0-5WW" customClass="GraphStatistics" customModule="DoItTimeFirstTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w4a-9T-TQy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1a-hf-7hi">
+                                <rect key="frame" x="16" y="44" width="343" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VQ0-U3-x8I" firstAttribute="trailing" secondItem="f1a-hf-7hi" secondAttribute="trailing" constant="16" id="WRK-Ey-l3J"/>
+                            <constraint firstItem="f1a-hf-7hi" firstAttribute="top" secondItem="VQ0-U3-x8I" secondAttribute="top" id="mgz-M6-siG"/>
+                            <constraint firstItem="f1a-hf-7hi" firstAttribute="leading" secondItem="VQ0-U3-x8I" secondAttribute="leading" constant="16" id="mmN-qI-uMx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VQ0-U3-x8I"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="P6h-wa-5Gp"/>
                     <navigationItem key="navigationItem" id="xBv-Ru-SnP"/>
+                    <connections>
+                        <outlet property="timeForAllAppLabel" destination="f1a-hf-7hi" id="YXK-bc-qF4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqb-x4-5gH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -291,7 +307,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yom-49-huH">
-                                            <rect key="frame" x="224.5" y="3" width="40.5" height="55.5"/>
+                                            <rect key="frame" x="203" y="3" width="62" height="56"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -311,7 +327,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Yom-49-huH" secondAttribute="trailing" constant="110" id="0d4-EZ-tr7"/>
                                     <constraint firstAttribute="bottom" secondItem="Yom-49-huH" secondAttribute="bottom" constant="3.5" id="6WB-Yi-h3G"/>
                                     <constraint firstItem="Yom-49-huH" firstAttribute="top" secondItem="jfB-qY-GZW" secondAttribute="top" constant="3" id="aQd-gD-25v"/>
-                                    <constraint firstItem="Yom-49-huH" firstAttribute="leading" secondItem="jfB-qY-GZW" secondAttribute="leading" constant="224.5" id="fJ0-7C-dHI"/>
+                                    <constraint firstItem="Yom-49-huH" firstAttribute="leading" secondItem="jfB-qY-GZW" secondAttribute="leading" constant="203" id="fJ0-7C-dHI"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="nameActivityLabel" destination="UZm-Rq-HWv" id="Ea6-IU-jR1"/>
@@ -358,6 +374,9 @@
                                     <segment title="Month"/>
                                     <segment title="Year"/>
                                 </segments>
+                                <connections>
+                                    <action selector="selectStatistics:" destination="Gi7-Bz-v7q" eventType="valueChanged" id="3BP-IW-y0v"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time of choice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwF-N0-v3d">
                                 <rect key="frame" x="16" y="185" width="343" height="21"/>
@@ -380,9 +399,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RZH-Qg-Ftf"/>
                     </view>
-                    <navigationItem key="navigationItem" id="q5c-7r-R9b"/>
+                    <navigationItem key="navigationItem" id="q5c-7r-R9b">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="5ZO-hB-Bnq">
+                            <connections>
+                                <action selector="editInfoForObject:" destination="Gi7-Bz-v7q" id="m62-Dw-LYV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="testNameInfoLabel" destination="dWi-UG-TW4" id="jGm-qf-4Eq"/>
+                        <outlet property="allTimeLabel" destination="dWi-UG-TW4" id="jGm-qf-4Eq"/>
+                        <outlet property="timeOfChoiceLabel" destination="mwF-N0-v3d" id="xgg-WZ-YZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t53-rg-DAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -432,6 +458,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="NAg-lI-7Kv"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="81e-LZ-Le1">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

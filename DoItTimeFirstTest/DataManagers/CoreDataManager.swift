@@ -93,4 +93,9 @@ extension CoreDataManager {
         
         saveContext()
     }
+    
+    func editName(_ task: Purpose, newName: String) {
+        task.name = newName
+        saveContext()
+    }
 }
