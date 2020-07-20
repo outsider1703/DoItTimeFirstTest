@@ -98,7 +98,7 @@ extension ToDoBarTableViewController {
     }
 }
 
-//MARK: - Alerts
+//MARK: - Alert
 extension ToDoBarTableViewController {
     private func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)

@@ -69,7 +69,8 @@ class ActivityTableViewCell: UITableViewCell {
         
         timer?.invalidate()
         timer = nil
-        timerCount = 0     }
+        timerCount = 0
+    }
 }
 
 
