@@ -14,7 +14,7 @@ class GraphStatistics: UIViewController {
     var allPurposes: [Purpose] = []
     
     var allTime: Int64 {
-        getAllTime() / 60
+        getAllTime()
     }
     
     override func viewDidLoad() {
@@ -37,6 +37,6 @@ extension GraphStatistics {
                 allTime += timeCountInTask?.time ?? 0
             }
         }
-        return allTime
+        return allTime / 60
     }
 }

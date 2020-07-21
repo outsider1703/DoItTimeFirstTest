@@ -9,7 +9,7 @@
 import UIKit
 
 class DayInformationViewController: UIViewController {
-
+    
     @IBOutlet var testLabel: UILabel!
     let date = Date()
     let calendar = Calendar.current
@@ -21,16 +21,4 @@ class DayInformationViewController: UIViewController {
         dateFormat.dateFormat = "d"
         testLabel.text = dateFormat.string(from: date)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

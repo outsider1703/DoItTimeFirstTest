@@ -23,18 +23,18 @@ enum PeriodType: Int {
 }
 
 class AgendaViewController: UIViewController {
-
+    
     @IBOutlet var agendaCollection: UICollectionView!
-
+    
     fileprivate var collectionData: PeriodType = .week
-//    let date = Date()
-//    let dateFormat = DateFormatter()
-
+    //    let date = Date()
+    //    let dateFormat = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-
+    
     @IBAction func dateFormatSwitching(_ sender: UISegmentedControl) {
         collectionData = PeriodType(rawValue: sender.selectedSegmentIndex) ?? .week
         agendaCollection.reloadData()
@@ -43,17 +43,17 @@ class AgendaViewController: UIViewController {
 
 // MARK: Setting UICollectionView
 extension AgendaViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         collectionData.number
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! DayInAgendaCollectionViewCell
         cell.backgroundColor = .black
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemPerRow: CGFloat = 2
         let paddingWidth = 2 * (itemPerRow + 1)
@@ -61,15 +61,15 @@ extension AgendaViewController : UICollectionViewDataSource, UICollectionViewDel
         let widthPerItem = availableWidth / itemPerRow
         return CGSize(width: widthPerItem, height: widthPerItem)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         2
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         2
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
     }

@@ -49,7 +49,7 @@ class ActivityTableViewCell: UITableViewCell {
     @IBAction func startTimeButton() {
         startButton.isHidden = true
         stopButton.isHidden = false
-
+        
         timer = Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(updateTimer),
@@ -73,15 +73,14 @@ class ActivityTableViewCell: UITableViewCell {
     }
 }
 
-
 extension ActivityTableViewCell {
     
     func prepareNameForCell(text: String?) {
         nameActivityLabel.text = text
     }
     
-   func prepareIndexForTag(index: Int) {
+    func prepareIndexForTag(index: Int) {
         startButton.tag = index
     }
-
+    
 }

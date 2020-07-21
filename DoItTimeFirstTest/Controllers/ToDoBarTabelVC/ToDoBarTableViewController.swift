@@ -12,7 +12,7 @@ import CoreData
 class ToDoBarTableViewController: UITableViewController {
     
     var purposes: [Purpose] = []
-    var cellByIndex: Purpose!
+    var cellByIndex: Purpose?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +22,9 @@ class ToDoBarTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          purposes.count
-      }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        purposes.count
+    }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         65
@@ -38,7 +38,7 @@ class ToDoBarTableViewController: UITableViewController {
         
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let archiveAction = swipeForArchive(at: indexPath)
         return UISwipeActionsConfiguration(actions: [archiveAction])
@@ -92,8 +92,10 @@ extension ToDoBarTableViewController {
 extension ToDoBarTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToInfo" {
+            guard let cell = cellByIndex else { return }
             let infoVC = segue.destination as! InformationViewController
-            infoVC.swipeCellInfo = cellByIndex
+            infoVC.swipeCellInfo = cell
+            cellByIndex = nil
         }        
     }
 }
@@ -102,25 +104,25 @@ extension ToDoBarTableViewController {
 extension ToDoBarTableViewController {
     private func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-
+        
         let saveAction = UIAlertAction(title: "Achieve This", style: .default) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
-
+            
             let taskObjectCore = CoreDataManager.shared.getAnObject()
             taskObjectCore?.name = task
-
+            
             self.purposes.append(taskObjectCore!)
             self.reloadRowsAfterInsert()
-
+            
             CoreDataManager.shared.save(taskObjectCore!)
         }
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
-
+        
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
         alert.addTextField()
-
+        
         present(alert, animated: true)
     }
 }
@@ -131,8 +133,9 @@ extension ToDoBarTableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
                                                             target: self,
                                                             action: #selector(addTask))
+        navigationItem.rightBarButtonItem?.style = .done
     }
-
+    
     @objc private func addTask() {
         showAlert(title: "New Goals")
     }
