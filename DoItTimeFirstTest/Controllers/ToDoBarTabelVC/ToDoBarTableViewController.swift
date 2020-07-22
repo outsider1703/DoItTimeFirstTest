@@ -36,6 +36,8 @@ class ToDoBarTableViewController: UITableViewController {
         cell.prepareNameForCell(text: purposes[indexPath.row].name)
         cell.prepareIndexForTag(index: indexPath.row)
         
+        
+        
         return cell
     }
     

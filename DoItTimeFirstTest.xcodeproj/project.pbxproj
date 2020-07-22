@@ -69,19 +69,18 @@
 			path = storyboards;
 			sourceTree = "<group>";
 		};
-		FA649B3124B4C47000117607 /* delegates */ = {
+		FA649B3124B4C47000117607 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */,
 				FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */,
 			);
-			path = delegates;
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		FA649B3224B4C49C00117607 /* supportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				FA649B3124B4C47000117607 /* delegates */,
 				FAB11D7624AA44680013A2D5 /* Assets.xcassets */,
 				FAB11D7B24AA44680013A2D5 /* Info.plist */,
 			);
@@ -200,6 +199,7 @@
 				FA649B3024B4C42D00117607 /* storyboards */,
 				FA649B3624B4C59D00117607 /* Models */,
 				FA649B4224B8534B00117607 /* DataManagers */,
+				FA649B3124B4C47000117607 /* Delegates */,
 				FA649B3224B4C49C00117607 /* supportingFiles */,
 			);
 			path = DoItTimeFirstTest;

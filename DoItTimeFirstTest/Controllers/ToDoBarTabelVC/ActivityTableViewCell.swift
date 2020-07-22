@@ -17,6 +17,7 @@ class ActivityTableViewCell: UITableViewCell {
     
     var objectTime: [Purpose]!
     var timer: Timer?
+    var cellIndex: Int?
     var timerCount: Int64 = 0 {
         didSet {
             if timerCount < 60 {
@@ -43,7 +44,6 @@ class ActivityTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
     
     @IBAction func startTimeButton() {
@@ -55,17 +55,17 @@ class ActivityTableViewCell: UITableViewCell {
                                      selector: #selector(updateTimer),
                                      userInfo: nil,
                                      repeats: true)
+        print(Date())
+        print(startButton.tag)
     }
     
-    @objc func updateTimer() {
-        timerCount += 1
-    }
+    @objc func updateTimer() { timerCount += 1 }
     
     @IBAction func stopTimeButton() {
         stopButton.isHidden = true
         startButton.isHidden = false
         
-        CoreDataManager.shared.updateTime(objectTime[startButton.tag], newTime: timerCount)
+        CoreDataManager.shared.updateTime(objectTime[cellIndex!], newTime: timerCount)
         
         timer?.invalidate()
         timer = nil
@@ -80,7 +80,14 @@ extension ActivityTableViewCell {
     }
     
     func prepareIndexForTag(index: Int) {
-        startButton.tag = index
+        cellIndex = index
     }
-    
+}
+
+extension ActivityTableViewCell {
+    private func getStartTimeForIndex() {
+        for objeckt in objectTime {
+            objeckt
+        }
+    }
 }

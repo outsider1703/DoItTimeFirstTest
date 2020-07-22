@@ -18,24 +18,22 @@ class InformationViewController: UIViewController {
         getAllTime() / 60
     }
     
-    var firstValueTime: Int64 {
-        getSpecificTime()
-    }
-    var specificTime: Int64 = 0 {
-        didSet {
-            timeOfChoiceLabel.text = "Time today: \(specificTime) minutes"
+    var specificTime: Int64 {
+        get {
+            getSpecificTime()
+        }
+        set {
+            timeOfChoiceLabel.text = "Time today: \(newValue) minutes"
         }
     }
     
-    
     // let color = UIColor.init(named: "red")
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = swipeCellInfo.name
         allTimeLabel.text = "All Time: \(allTime) minutes"
-        timeOfChoiceLabel.text = "Time today: \(firstValueTime) minutes"
+        timeOfChoiceLabel.text = "Time today: \(specificTime) minutes"
     }
     
     @IBAction func selectStatistics(_ sender: UISegmentedControl) {
@@ -43,7 +41,7 @@ class InformationViewController: UIViewController {
     }
     
     @IBAction func editInfoForObject(_ sender: UIBarButtonItem) {
-        showAlert(title: "New Name")
+        showAlert(title: "Edit Name")
     }
     
 }
@@ -119,7 +117,9 @@ extension InformationViewController {
         
         alert.addAction(saveAction)
         alert.addAction(cancelAction)
-        alert.addTextField()
+        alert.addTextField { (text) in
+            text.text = self.swipeCellInfo.name
+        }
         
         present(alert, animated: true)
     }

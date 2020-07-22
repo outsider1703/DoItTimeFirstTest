@@ -56,11 +56,6 @@ extension CoreDataManager {
     }
     
     func save(_ newTask: Purpose) {
-        do {
-            try viewContext.save()
-        } catch let error {
-            print(error.localizedDescription)
-        }
         saveContext()
     }
     
