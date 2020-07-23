@@ -93,4 +93,15 @@ extension CoreDataManager {
         task.name = newName
         saveContext()
     }
+    
+    func saveStartDate(_ task: Purpose, date: Date) {
+        task.startDate = date
+        saveContext()
+    }
+    
+    func deleteStartDate(_ task: Purpose) {
+        task.startDate = nil
+        saveContext()
+    }
+    
 }

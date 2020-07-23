@@ -14,11 +14,21 @@ class ToDoBarTableViewController: UITableViewController {
     var purposes: [Purpose] = []
     var cellByIndex: Purpose?
     
+    var array: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         purposes = CoreDataManager.shared.fetchData()
+        
+        for task in purposes {
+            if task.startDate != nil {
+                array.append(1)
+            } else {
+                array.append(0)
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -34,9 +44,7 @@ class ToDoBarTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ActivityTableViewCell
         
         cell.prepareNameForCell(text: purposes[indexPath.row].name)
-        cell.prepareIndexForTag(index: indexPath.row)
-        
-        
+        cell.prepareIndexForTag(indexPath: indexPath.row)
         
         return cell
     }
@@ -142,4 +150,6 @@ extension ToDoBarTableViewController {
         showAlert(title: "New Goals")
     }
 }
+
+
 

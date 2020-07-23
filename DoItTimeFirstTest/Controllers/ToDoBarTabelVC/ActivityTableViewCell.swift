@@ -36,16 +36,13 @@ class ActivityTableViewCell: UITableViewCell {
         
         startButton.isHidden = false
         stopButton.isHidden = true
+        
     }
     
     override func prepareForReuse() {
         nameActivityLabel.text = nil
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+        
     @IBAction func startTimeButton() {
         startButton.isHidden = true
         stopButton.isHidden = false
@@ -55,8 +52,8 @@ class ActivityTableViewCell: UITableViewCell {
                                      selector: #selector(updateTimer),
                                      userInfo: nil,
                                      repeats: true)
-        print(Date())
-        print(startButton.tag)
+        //timer?.isValid
+        CoreDataManager.shared.saveStartDate(objectTime[cellIndex!], date: Date())
     }
     
     @objc func updateTimer() { timerCount += 1 }
@@ -67,6 +64,7 @@ class ActivityTableViewCell: UITableViewCell {
         
         CoreDataManager.shared.updateTime(objectTime[cellIndex!], newTime: timerCount)
         
+        CoreDataManager.shared.deleteStartDate(objectTime[cellIndex!])
         timer?.invalidate()
         timer = nil
         timerCount = 0
@@ -79,15 +77,34 @@ extension ActivityTableViewCell {
         nameActivityLabel.text = text
     }
     
-    func prepareIndexForTag(index: Int) {
-        cellIndex = index
+    func prepareIndexForTag(indexPath: Int) {
+        cellIndex = indexPath
     }
 }
 
 extension ActivityTableViewCell {
-    private func getStartTimeForIndex() {
-        for objeckt in objectTime {
-            objeckt
-        }
+    func getStartTimeForIndex() {
+          let calendar = Calendar.current
+          
+          for objeckt in objectTime {
+              if objeckt.startDate != nil {
+                  let test = calendar.dateComponents([.day, .hour, .minute, .second],
+                                                     from: objeckt.startDate!,
+                                                     to: Date())
+                  let awakeTime = calculationOfAmount(test.day, test.hour, test.minute, test.second)
+                  timerCount = Int64(awakeTime)
+                print(awakeTime)
+              }
+          }
+      }
+    private func calculationOfAmount(_ day: Int?, _ hour: Int?, _ minute: Int?, _ second: Int?) -> Int {
+        var summ = 0
+        
+        if day != 0 { summ += day! * 86400 }
+        if hour != 0 { summ += hour! * 3600 }
+        if minute != 0 { summ += minute! * 60 }
+        summ += second!
+        
+        return summ
     }
 }

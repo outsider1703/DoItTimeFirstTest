@@ -61,7 +61,7 @@ extension InformationViewController {
     private func getSpecificTime(_ indexAtSegment: Int? = nil) -> Int64 {
         var timeForSpecificDate: Int64 = 0
         let calendar = Calendar.current
-        
+                
         guard let time = swipeCellInfo.time else { return 0 }
         for object in time {
             let timeDataOmbject = object as? TimeData
