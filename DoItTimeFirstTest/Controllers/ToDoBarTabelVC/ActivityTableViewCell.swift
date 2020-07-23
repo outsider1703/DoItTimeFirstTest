@@ -42,7 +42,7 @@ class ActivityTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         nameActivityLabel.text = nil
     }
-        
+
     @IBAction func startTimeButton() {
         startButton.isHidden = true
         stopButton.isHidden = false
@@ -53,7 +53,7 @@ class ActivityTableViewCell: UITableViewCell {
                                      userInfo: nil,
                                      repeats: true)
         //timer?.isValid
-        CoreDataManager.shared.saveStartDate(objectTime[cellIndex!], date: Date())
+        CoreDataManager.shared.saveStartDate(objectTime[cellIndex!], index: Int16(cellIndex!)) //##
     }
     
     @objc func updateTimer() { timerCount += 1 }
@@ -80,31 +80,38 @@ extension ActivityTableViewCell {
     func prepareIndexForTag(indexPath: Int) {
         cellIndex = indexPath
     }
+    //################## test
+    
+    func setAwakeTimes(_ task: Purpose, timeCount: Int64) {
+        timerCount = timeCount
+    }
+    
 }
 
-extension ActivityTableViewCell {
-    func getStartTimeForIndex() {
-          let calendar = Calendar.current
-          
-          for objeckt in objectTime {
-              if objeckt.startDate != nil {
-                  let test = calendar.dateComponents([.day, .hour, .minute, .second],
-                                                     from: objeckt.startDate!,
-                                                     to: Date())
-                  let awakeTime = calculationOfAmount(test.day, test.hour, test.minute, test.second)
-                  timerCount = Int64(awakeTime)
-                print(awakeTime)
-              }
-          }
-      }
-    private func calculationOfAmount(_ day: Int?, _ hour: Int?, _ minute: Int?, _ second: Int?) -> Int {
-        var summ = 0
-        
-        if day != 0 { summ += day! * 86400 }
-        if hour != 0 { summ += hour! * 3600 }
-        if minute != 0 { summ += minute! * 60 }
-        summ += second!
-        
-        return summ
-    }
-}
+//extension ActivityTableViewCell {
+//    func getStartTimeForIndex() {
+//        let calendar = Calendar.current
+//        var awakeTime = [Int]()
+//        for objeckt in objectTime {
+//            if objeckt.startDate != nil {
+//                let test = calendar.dateComponents([.day, .hour, .minute, .second],
+//                                                   from: objeckt.startDate!,
+//                                                   to: Date())
+//                awakeTime.append(calculationOfAmount(test.day, test.hour, test.minute, test.second))
+//                //timerCount = Int64(awakeTime)
+//                //print(awakeTime)
+//                //print(objeckt.index)
+//            }
+//        }
+//    }
+//    private func calculationOfAmount(_ day: Int?, _ hour: Int?, _ minute: Int?, _ second: Int?) -> Int {
+//        var summ = 0
+//
+//        if day != 0 { summ += day! * 86400 }
+//        if hour != 0 { summ += hour! * 3600 }
+//        if minute != 0 { summ += minute! * 60 }
+//        summ += second!
+//        
+//        return summ
+//    }
+//}

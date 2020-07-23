@@ -13,22 +13,14 @@ class ToDoBarTableViewController: UITableViewController {
     
     var purposes: [Purpose] = []
     var cellByIndex: Purpose?
-    
-    var array: [Int] = []
+    var awakeTimes = [Int: Int64]() // ##
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         purposes = CoreDataManager.shared.fetchData()
-        
-        for task in purposes {
-            if task.startDate != nil {
-                array.append(1)
-            } else {
-                array.append(0)
-            }
-        }
+        awakeTimes = getStartTimeForIndex() //##
     }
     
     // MARK: - Table view data source
@@ -46,6 +38,9 @@ class ToDoBarTableViewController: UITableViewController {
         cell.prepareNameForCell(text: purposes[indexPath.row].name)
         cell.prepareIndexForTag(indexPath: indexPath.row)
         
+        for key in awakeTimes.keys {
+            cell.setAwakeTimes(purposes[key], timeCount: awakeTimes[key]!) //##
+        }
         return cell
     }
     
@@ -151,5 +146,31 @@ extension ToDoBarTableViewController {
     }
 }
 
+///###
+extension ToDoBarTableViewController {
+    private func getStartTimeForIndex() -> [Int: Int64] {
+        let calendar = Calendar.current
+    var awakeTime = [Int: Int64]()
+        for objeckt in purposes {
+            if objeckt.startDate != nil {
+                let test = calendar.dateComponents([.day, .hour, .minute, .second],
+                                                   from: objeckt.startDate!,
+                                                   to: Date())
+                awakeTime[Int(objeckt.index)] = Int64(calculationOfAmount(test.day, test.hour, test.minute, test.second))
+            }
+        }
+        return awakeTime
+    }
+    private func calculationOfAmount(_ day: Int?, _ hour: Int?, _ minute: Int?, _ second: Int?) -> Int {
+        var summ = 0
+        
+        if day != 0 { summ += day! * 86400 }
+        if hour != 0 { summ += hour! * 3600 }
+        if minute != 0 { summ += minute! * 60 }
+        summ += second!
+        
+        return summ
+    }
+}
 
 
