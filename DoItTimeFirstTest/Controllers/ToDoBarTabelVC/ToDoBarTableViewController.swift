@@ -13,14 +13,15 @@ class ToDoBarTableViewController: UITableViewController {
     
     var purposes: [Purpose] = []
     var cellByIndex: Purpose?
-    var awakeTimes = [Int: Int64]() // ##
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         purposes = CoreDataManager.shared.fetchData()
-        awakeTimes = getStartTimeForIndex() //##
+        getStartTimeForIndex()
+        
+        print(purposes)
     }
     
     // MARK: - Table view data source
@@ -37,10 +38,8 @@ class ToDoBarTableViewController: UITableViewController {
         
         cell.prepareNameForCell(text: purposes[indexPath.row].name)
         cell.prepareIndexForTag(indexPath: indexPath.row)
+        cell.setAwakeTimes(timeCount: purposes[indexPath.row].startTime)
         
-        for key in awakeTimes.keys {
-            cell.setAwakeTimes(purposes[key], timeCount: awakeTimes[key]!) //##
-        }
         return cell
     }
     
@@ -146,24 +145,24 @@ extension ToDoBarTableViewController {
     }
 }
 
-///###
 extension ToDoBarTableViewController {
-    private func getStartTimeForIndex() -> [Int: Int64] {
+    private func getStartTimeForIndex() {
         let calendar = Calendar.current
-    var awakeTime = [Int: Int64]()
+        var awakeTime: Int?
+        
         for objeckt in purposes {
             if objeckt.startDate != nil {
                 let test = calendar.dateComponents([.day, .hour, .minute, .second],
                                                    from: objeckt.startDate!,
                                                    to: Date())
-                awakeTime[Int(objeckt.index)] = Int64(calculationOfAmount(test.day, test.hour, test.minute, test.second))
+                awakeTime = calculationOfAmount(test.day, test.hour, test.minute, test.second)
+                CoreDataManager.shared.saveStartTime(objeckt, awakeTime: Int64(awakeTime!))
             }
         }
-        return awakeTime
     }
     private func calculationOfAmount(_ day: Int?, _ hour: Int?, _ minute: Int?, _ second: Int?) -> Int {
         var summ = 0
-        
+
         if day != 0 { summ += day! * 86400 }
         if hour != 0 { summ += hour! * 3600 }
         if minute != 0 { summ += minute! * 60 }

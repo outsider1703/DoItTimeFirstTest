@@ -16,6 +16,7 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet private var nameActivityLabel: UILabel!
     
     var objectTime: [Purpose]!
+    
     var timer: Timer?
     var cellIndex: Int?
     var timerCount: Int64 = 0 {
@@ -36,7 +37,6 @@ class ActivityTableViewCell: UITableViewCell {
         
         startButton.isHidden = false
         stopButton.isHidden = true
-        
     }
     
     override func prepareForReuse() {
@@ -47,17 +47,11 @@ class ActivityTableViewCell: UITableViewCell {
         startButton.isHidden = true
         stopButton.isHidden = false
         
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self,
-                                     selector: #selector(updateTimer),
-                                     userInfo: nil,
-                                     repeats: true)
-        //timer?.isValid
-        CoreDataManager.shared.saveStartDate(objectTime[cellIndex!], index: Int16(cellIndex!)) //##
+        startTimer()
+
+        CoreDataManager.shared.saveStartDate(objectTime[cellIndex!])
     }
-    
-    @objc func updateTimer() { timerCount += 1 }
-    
+        
     @IBAction func stopTimeButton() {
         stopButton.isHidden = true
         startButton.isHidden = false
@@ -65,6 +59,7 @@ class ActivityTableViewCell: UITableViewCell {
         CoreDataManager.shared.updateTime(objectTime[cellIndex!], newTime: timerCount)
         
         CoreDataManager.shared.deleteStartDate(objectTime[cellIndex!])
+        CoreDataManager.shared.deleteStartTime(objectTime[cellIndex!])
         timer?.invalidate()
         timer = nil
         timerCount = 0
@@ -80,38 +75,25 @@ extension ActivityTableViewCell {
     func prepareIndexForTag(indexPath: Int) {
         cellIndex = indexPath
     }
-    //################## test
     
-    func setAwakeTimes(_ task: Purpose, timeCount: Int64) {
+    func setAwakeTimes(timeCount: Int64) {
         timerCount = timeCount
+        if timeCount > 0 {
+        startButton.isHidden = true
+        stopButton.isHidden = false
+        startTimer()
+        }
     }
-    
 }
+extension ActivityTableViewCell {
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
 
-//extension ActivityTableViewCell {
-//    func getStartTimeForIndex() {
-//        let calendar = Calendar.current
-//        var awakeTime = [Int]()
-//        for objeckt in objectTime {
-//            if objeckt.startDate != nil {
-//                let test = calendar.dateComponents([.day, .hour, .minute, .second],
-//                                                   from: objeckt.startDate!,
-//                                                   to: Date())
-//                awakeTime.append(calculationOfAmount(test.day, test.hour, test.minute, test.second))
-//                //timerCount = Int64(awakeTime)
-//                //print(awakeTime)
-//                //print(objeckt.index)
-//            }
-//        }
-//    }
-//    private func calculationOfAmount(_ day: Int?, _ hour: Int?, _ minute: Int?, _ second: Int?) -> Int {
-//        var summ = 0
-//
-//        if day != 0 { summ += day! * 86400 }
-//        if hour != 0 { summ += hour! * 3600 }
-//        if minute != 0 { summ += minute! * 60 }
-//        summ += second!
-//        
-//        return summ
-//    }
-//}
+    }
+    @objc func updateTimer() { timerCount += 1 }
+
+}

@@ -94,14 +94,22 @@ extension CoreDataManager {
         saveContext()
     }
     
-    func saveStartDate(_ task: Purpose, index: Int16) {
-        task.index = index
+    func saveStartDate(_ task: Purpose) {
         task.startDate = Date()
         saveContext()
     }
     
     func deleteStartDate(_ task: Purpose) {
         task.startDate = nil
+        saveContext()
+    }
+    
+    func saveStartTime(_ task: Purpose, awakeTime: Int64) {
+        task.startTime = awakeTime
+        saveContext()
+    }
+    func deleteStartTime(_ task: Purpose) {
+        task.startTime = 0
         saveContext()
     }
     
