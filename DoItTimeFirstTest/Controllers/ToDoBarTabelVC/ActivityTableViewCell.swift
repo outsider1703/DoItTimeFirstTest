@@ -15,11 +15,11 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var nameActivityLabel: UILabel!
     
-    var objectTime: [Purpose]!
+   private var objectTime: [Purpose]!
     
-    var timer: Timer?
-    var cellIndex: Int?
-    var timerCount: Int64 = 0 {
+   private var timer: Timer?
+   private var cellIndex: Int?
+   private var timerCount: Int64 = 0 {
         didSet {
             if timerCount < 60 {
                 timeLabel.text = String(timerCount)

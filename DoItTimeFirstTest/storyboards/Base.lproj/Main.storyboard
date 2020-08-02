@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--PieChart-->
         <scene sceneID="myi-Bk-WfW">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="vXr-B0-5WW" customClass="GraphStatistics" customModule="DoItTimeFirstTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VQ0-U3-x8I"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="P6h-wa-5Gp"/>
+                    <tabBarItem key="tabBarItem" title="PieChart" id="P6h-wa-5Gp"/>
                     <navigationItem key="navigationItem" id="xBv-Ru-SnP"/>
                     <connections>
                         <outlet property="timeForAllAppLabel" destination="f1a-hf-7hi" id="YXK-bc-qF4"/>
@@ -39,7 +39,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqb-x4-5gH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="481" y="1675"/>
+            <point key="canvasLocation" x="-89" y="1668"/>
+        </scene>
+        <!--BarChart-->
+        <scene sceneID="wWa-Q4-UHw">
+            <objects>
+                <viewController id="NJs-gA-II2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DGw-9h-l67">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Wym-KY-Y90"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="BarChart" id="lcg-wm-axE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nJD-kd-4E2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1014" y="1667"/>
         </scene>
         <!--Agenda View Controller-->
         <scene sceneID="fqi-21-UWG">
@@ -174,7 +190,7 @@
                                     <constraint firstAttribute="height" constant="80" id="epa-5P-eAd"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Rating"/>
+                                <state key="normal" title="--"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5b-8J-ugc">
                                 <rect key="frame" x="279" y="64" width="80" height="80"/>
@@ -464,6 +480,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="vXr-B0-5WW" kind="relationship" relationship="viewControllers" id="jNa-rO-DVm"/>
+                        <segue destination="NJs-gA-II2" kind="relationship" relationship="viewControllers" id="ivg-1Z-iib"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRt-vs-fkG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

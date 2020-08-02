@@ -4,7 +4,7 @@
 //
 //  Created by Macbook on 05.07.2020.
 //  Copyright © 2020 Igor Simonov. All rights reserved.
-//
+
 
 import UIKit
 import CoreData
@@ -20,8 +20,6 @@ class ToDoBarTableViewController: UITableViewController {
         setupNavigationBar()
         purposes = CoreDataManager.shared.fetchData()
         getStartTimeForIndex()
-        
-        print(purposes)
     }
     
     // MARK: - Table view data source
@@ -152,17 +150,20 @@ extension ToDoBarTableViewController {
         
         for objeckt in purposes {
             if objeckt.startDate != nil {
-                let test = calendar.dateComponents([.day, .hour, .minute, .second],
+                let differenceBetweenDates = calendar.dateComponents([.day, .hour, .minute, .second],
                                                    from: objeckt.startDate!,
                                                    to: Date())
-                awakeTime = calculationOfAmount(test.day, test.hour, test.minute, test.second)
+                awakeTime = calculationOfAmount(differenceBetweenDates.day,
+                                                differenceBetweenDates.hour,
+                                                differenceBetweenDates.minute,
+                                                differenceBetweenDates.second)
                 CoreDataManager.shared.saveStartTime(objeckt, awakeTime: Int64(awakeTime!))
             }
         }
     }
     private func calculationOfAmount(_ day: Int?, _ hour: Int?, _ minute: Int?, _ second: Int?) -> Int {
         var summ = 0
-
+        
         if day != 0 { summ += day! * 86400 }
         if hour != 0 { summ += hour! * 3600 }
         if minute != 0 { summ += minute! * 60 }
