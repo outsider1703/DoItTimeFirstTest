@@ -96,4 +96,6 @@ extension ActivityTableViewCell {
     }
     @objc func updateTimer() { timerCount += 1 }
 
+    
+    
 }
