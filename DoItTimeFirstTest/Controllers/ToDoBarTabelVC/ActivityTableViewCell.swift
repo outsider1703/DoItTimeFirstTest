@@ -15,9 +15,11 @@ class ActivityTableViewCell: UITableViewCell {
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var nameActivityLabel: UILabel!
     
-    var objectTime: [Purpose]!
-    var timer: Timer?
-    var timerCount: Int64 = 0 {
+   private var objectTime: [Purpose]!
+    
+   private var timer: Timer?
+   private var cellIndex: Int?
+   private var timerCount: Int64 = 0 {
         didSet {
             if timerCount < 60 {
                 timeLabel.text = String(timerCount)
@@ -40,39 +42,29 @@ class ActivityTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         nameActivityLabel.text = nil
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
-    
+
     @IBAction func startTimeButton() {
         startButton.isHidden = true
         stopButton.isHidden = false
+        
+        startTimer()
 
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self,
-                                     selector: #selector(updateTimer),
-                                     userInfo: nil,
-                                     repeats: true)
+        CoreDataManager.shared.saveStartDate(objectTime[cellIndex!])
     }
-    
-    @objc func updateTimer() {
-        timerCount += 1
-    }
-    
+        
     @IBAction func stopTimeButton() {
         stopButton.isHidden = true
         startButton.isHidden = false
         
-        CoreDataManager.shared.updateTime(objectTime[startButton.tag], newTime: timerCount)
+        CoreDataManager.shared.updateTime(objectTime[cellIndex!], newTime: timerCount)
         
+        CoreDataManager.shared.deleteStartDate(objectTime[cellIndex!])
+        CoreDataManager.shared.deleteStartTime(objectTime[cellIndex!])
         timer?.invalidate()
         timer = nil
         timerCount = 0
     }
 }
-
 
 extension ActivityTableViewCell {
     
@@ -80,8 +72,30 @@ extension ActivityTableViewCell {
         nameActivityLabel.text = text
     }
     
-   func prepareIndexForTag(index: Int) {
-        startButton.tag = index
+    func prepareIndexForTag(indexPath: Int) {
+        cellIndex = indexPath
     }
+    
+    func setAwakeTimes(timeCount: Int64) {
+        timerCount = timeCount
+        if timeCount > 0 {
+        startButton.isHidden = true
+        stopButton.isHidden = false
+        startTimer()
+        }
+    }
+}
+extension ActivityTableViewCell {
+    private func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(updateTimer),
+                                     userInfo: nil,
+                                     repeats: true)
 
+    }
+    @objc func updateTimer() { timerCount += 1 }
+
+    
+    
 }
