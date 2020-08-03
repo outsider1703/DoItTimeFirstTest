@@ -28,6 +28,7 @@ class InformationViewController: UIViewController {
     }
     
     // let color = UIColor.init(named: "red")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class InformationViewController: UIViewController {
     
     @IBAction func editInfoForObject(_ sender: UIBarButtonItem) {
         showAlert(title: "Edit Name")
+
     }
     
 }
@@ -101,12 +103,13 @@ extension InformationViewController {
     //            let testDay = dateFormater.string(from: ttextDate!)
     //
     //     }
+
 }
 
 extension InformationViewController {
     private func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-        
+
         let saveAction = UIAlertAction(title: "Edit", style: .default) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
             CoreDataManager.shared.editName(self.swipeCellInfo, newName: task)
@@ -125,4 +128,5 @@ extension InformationViewController {
     }
     
     
+
 }

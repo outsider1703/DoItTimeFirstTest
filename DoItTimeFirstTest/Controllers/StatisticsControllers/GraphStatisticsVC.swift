@@ -38,7 +38,6 @@ extension GraphStatistics {
             }
         }
         return allTime / 60
+      }
     }
-    
-    
 }
