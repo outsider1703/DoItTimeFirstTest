@@ -28,7 +28,7 @@ class InformationViewController: UIViewController {
     }
     
     // let color = UIColor.init(named: "red")
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class InformationViewController: UIViewController {
     
     @IBAction func editInfoForObject(_ sender: UIBarButtonItem) {
         showAlert(title: "Edit Name")
-
+        
     }
     
 }
@@ -63,7 +63,7 @@ extension InformationViewController {
     private func getSpecificTime(_ indexAtSegment: Int? = nil) -> Int64 {
         var timeForSpecificDate: Int64 = 0
         let calendar = Calendar.current
-                
+        
         guard let time = swipeCellInfo.time else { return 0 }
         for object in time {
             let timeDataOmbject = object as? TimeData
@@ -92,24 +92,12 @@ extension InformationViewController {
         }
         return timeForSpecificDate / 60
     }
-    
-    //        private func compareDates(dateObjeckt: String) -> Int {
-    //            let date = Date()
-    //            let calendar = Calendar.current
-    //            let dateFormater = DateFormatter()
-    //            dateFormater.dateFormat = "dd.MM.yyyy 'at' HH:mm:ss"
-    //            let dateComponents = calendar.dateComponents([.day, .month, .year], from: (date))
-    //            let ttextDate = calendar.date(from: dateComponents)
-    //            let testDay = dateFormater.string(from: ttextDate!)
-    //
-    //     }
-
 }
 
 extension InformationViewController {
     private func showAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-
+        
         let saveAction = UIAlertAction(title: "Edit", style: .default) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
             CoreDataManager.shared.editName(self.swipeCellInfo, newName: task)
@@ -126,7 +114,4 @@ extension InformationViewController {
         
         present(alert, animated: true)
     }
-    
-    
-
 }

@@ -17,11 +17,15 @@ class GraphStatistics: UIViewController {
         getAllTime()
     }
     
+    let calendar = Calendar.current
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         allPurposes = CoreDataManager.shared.fetchData()
         
-        timeForAllAppLabel.text = "All the time at work: \(allTime) minutes."
+        //timeForAllAppLabel.text = "All the time at work: \(allTime) minutes."
+        timeForAllAppLabel.text = "\(calendar.veryShortWeekdaySymbols)"
+
     }
 }
 
@@ -38,6 +42,5 @@ extension GraphStatistics {
             }
         }
         return allTime / 60
-      }
     }
 }

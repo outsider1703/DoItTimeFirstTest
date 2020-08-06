@@ -108,12 +108,9 @@ extension CoreDataManager {
         task.startTime = awakeTime
         saveContext()
     }
+    
     func deleteStartTime(_ task: Purpose) {
         task.startTime = 0
         saveContext()
     }
-    
-    
-    
-
 }
