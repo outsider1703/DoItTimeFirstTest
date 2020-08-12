@@ -33,7 +33,7 @@ class InformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = swipeCellInfo.name
-        allTimeLabel.text = "All Time: \(allTime) minutes"
+        allTimeLabel.text = "All Time: \(allTime) min"
         timeOfChoiceLabel.text = "Time today: \(specificTime) minutes"
     }
     
@@ -41,9 +41,16 @@ class InformationViewController: UIViewController {
         specificTime = getSpecificTime(sender.selectedSegmentIndex)
     }
     
+    @IBAction func addLostTime(_ sender: UIButton) {
+        editLostTimeAlert(title: "Add lost time", flag: "plus")
+    }
+    
+    @IBAction func removeLostTime(_ sender: UIButton) {
+        editLostTimeAlert(title: "Remove lost time", flag: nil)
+    }
+    
     @IBAction func editInfoForObject(_ sender: UIBarButtonItem) {
-        showAlert(title: "Edit Name")
-        
+        editInfoAlert(title: "Edit Name")
     }
     
 }
@@ -55,7 +62,7 @@ extension InformationViewController {
         guard let time = swipeCellInfo.time else { return 0 }
         for object in time {
             let timeDataOmbject = object as? TimeData
-            allTime += timeDataOmbject?.time ?? 0
+            allTime += timeDataOmbject?.timeCounter ?? 0
         }
         return allTime
     }
@@ -87,7 +94,7 @@ extension InformationViewController {
             }
             
             if dateComponentsForObject == dateComponentsForDate {
-                timeForSpecificDate += timeDataOmbject?.time ?? 0
+                timeForSpecificDate += timeDataOmbject?.timeCounter ?? 0
             }
         }
         return timeForSpecificDate / 60
@@ -95,15 +102,38 @@ extension InformationViewController {
 }
 
 extension InformationViewController {
-    private func showAlert(title: String) {
+    
+    private func editLostTimeAlert(title: String, flag: String?) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] _ in
+            guard let addTime = alert.textFields?.first?.text, !addTime.isEmpty else { return }
+            
+            switch flag {
+            case "plus":
+                CoreDataManager.shared.updateTime(self.swipeCellInfo, newTime: (Int64(addTime) ?? 0) * 60 ) // test
+            default:
+                CoreDataManager.shared.updateTime(self.swipeCellInfo, newTime: -(Int64(addTime) ?? 0) * 60 ) // test
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { (text) in
+            text.placeholder = "minutes"
+        }
+        present(alert, animated: true)
+    }
+    
+    private func editInfoAlert(title: String) {
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Edit", style: .default) { [unowned self] _ in
-            guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
-            CoreDataManager.shared.editName(self.swipeCellInfo, newName: task)
-            self.navigationItem.title = task
+            guard let newName = alert.textFields?.first?.text, !newName.isEmpty else { return }
+            CoreDataManager.shared.editName(self.swipeCellInfo, newName: newName)
+            self.navigationItem.title = newName
         }
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
         
         alert.addAction(saveAction)
@@ -111,7 +141,6 @@ extension InformationViewController {
         alert.addTextField { (text) in
             text.text = self.swipeCellInfo.name
         }
-        
         present(alert, animated: true)
     }
 }

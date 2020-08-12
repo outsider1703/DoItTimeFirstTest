@@ -3,17 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BDB4E96BAA727438C285BB84 /* Pods_DoItTimeFirstTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CAA5DD2A56248E890EF1CE /* Pods_DoItTimeFirstTest.framework */; };
 		FA10109B24B146D1005328F0 /* ToDoBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10109A24B146D1005328F0 /* ToDoBarTableViewController.swift */; };
 		FA10109D24B147B7005328F0 /* ActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10109C24B147B7005328F0 /* ActivityTableViewCell.swift */; };
 		FA649B3B24B5F09F00117607 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA649B3A24B5F09F00117607 /* InformationViewController.swift */; };
 		FA649B4524B875C600117607 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA649B4424B875C600117607 /* CoreData.framework */; };
 		FA649B4824B8763200117607 /* SampleData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA649B4624B8763200117607 /* SampleData.xcdatamodeld */; };
 		FA649B4A24B8774E00117607 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA649B4924B8774E00117607 /* CoreDataManager.swift */; };
-		FA76765A24C24D82002396FC /* GraphStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76765924C24D82002396FC /* GraphStatisticsVC.swift */; };
+		FA6735AA24DDF54B00743B79 /* BarGraphStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6735A924DDF54B00743B79 /* BarGraphStatisticsVC.swift */; };
+		FA76765A24C24D82002396FC /* PieGraphStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76765924C24D82002396FC /* PieGraphStatisticsVC.swift */; };
 		FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */; };
 		FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */; };
 		FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D7124AA44630013A2D5 /* ViewController.swift */; };
@@ -24,13 +26,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6CCC6FF0B61A14AECEC5259A /* Pods-DoItTimeFirstTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoItTimeFirstTest.release.xcconfig"; path = "Target Support Files/Pods-DoItTimeFirstTest/Pods-DoItTimeFirstTest.release.xcconfig"; sourceTree = "<group>"; };
+		B1CAA5DD2A56248E890EF1CE /* Pods_DoItTimeFirstTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoItTimeFirstTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0501E6D974930673D64DC82 /* Pods-DoItTimeFirstTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoItTimeFirstTest.debug.xcconfig"; path = "Target Support Files/Pods-DoItTimeFirstTest/Pods-DoItTimeFirstTest.debug.xcconfig"; sourceTree = "<group>"; };
 		FA10109A24B146D1005328F0 /* ToDoBarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoBarTableViewController.swift; sourceTree = "<group>"; };
 		FA10109C24B147B7005328F0 /* ActivityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableViewCell.swift; sourceTree = "<group>"; };
 		FA649B3A24B5F09F00117607 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		FA649B4424B875C600117607 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FA649B4724B8763200117607 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FA649B4924B8774E00117607 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		FA76765924C24D82002396FC /* GraphStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphStatisticsVC.swift; sourceTree = "<group>"; };
+		FA6735A924DDF54B00743B79 /* BarGraphStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphStatisticsVC.swift; sourceTree = "<group>"; };
+		FA76765924C24D82002396FC /* PieGraphStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieGraphStatisticsVC.swift; sourceTree = "<group>"; };
 		FAB11D6A24AA44630013A2D5 /* DoItTimeFirstTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoItTimeFirstTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,12 +54,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA649B4524B875C600117607 /* CoreData.framework in Frameworks */,
+				BDB4E96BAA727438C285BB84 /* Pods_DoItTimeFirstTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AD4174A01AC8B90375EBB04 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D0501E6D974930673D64DC82 /* Pods-DoItTimeFirstTest.debug.xcconfig */,
+				6CCC6FF0B61A14AECEC5259A /* Pods-DoItTimeFirstTest.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FA649B3024B4C42D00117607 /* storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +137,6 @@
 			children = (
 				FA649B3524B4C58200117607 /* MainViewController */,
 				FA649B3324B4C50300117607 /* ToDoBarTabelVC */,
-
 				FA76765824C24C00002396FC /* StatisticsControllers */,
 			);
 			path = Controllers;
@@ -139,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				FA649B4424B875C600117607 /* CoreData.framework */,
+				B1CAA5DD2A56248E890EF1CE /* Pods_DoItTimeFirstTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -146,7 +162,8 @@
 		FA76765824C24C00002396FC /* StatisticsControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA76765924C24D82002396FC /* GraphStatisticsVC.swift */,
+				FA76765924C24D82002396FC /* PieGraphStatisticsVC.swift */,
+				FA6735A924DDF54B00743B79 /* BarGraphStatisticsVC.swift */,
 			);
 			path = StatisticsControllers;
 			sourceTree = "<group>";
@@ -157,6 +174,7 @@
 				FAB11D6C24AA44630013A2D5 /* DoItTimeFirstTest */,
 				FAB11D6B24AA44630013A2D5 /* Products */,
 				FA649B4324B875C600117607 /* Frameworks */,
+				5AD4174A01AC8B90375EBB04 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,9 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAB11D7E24AA44680013A2D5 /* Build configuration list for PBXNativeTarget "DoItTimeFirstTest" */;
 			buildPhases = (
+				FE0A4F253DFCD2EDEA41902A /* [CP] Check Pods Manifest.lock */,
 				FAB11D6624AA44630013A2D5 /* Sources */,
 				FAB11D6724AA44630013A2D5 /* Frameworks */,
 				FAB11D6824AA44630013A2D5 /* Resources */,
+				5A125170946534DABF07658E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +267,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5A125170946534DABF07658E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoItTimeFirstTest/Pods-DoItTimeFirstTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DoItTimeFirstTest/Pods-DoItTimeFirstTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DoItTimeFirstTest/Pods-DoItTimeFirstTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE0A4F253DFCD2EDEA41902A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DoItTimeFirstTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FAB11D6624AA44630013A2D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -255,13 +317,14 @@
 				FAC303FE24C728AA0040DFBC /* Test Model.swift in Sources */,
 				FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */,
 				FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */,
-				FA76765A24C24D82002396FC /* GraphStatisticsVC.swift in Sources */,
+				FA76765A24C24D82002396FC /* PieGraphStatisticsVC.swift in Sources */,
 				FA10109D24B147B7005328F0 /* ActivityTableViewCell.swift in Sources */,
 				FA10109B24B146D1005328F0 /* ToDoBarTableViewController.swift in Sources */,
 				FA649B4A24B8774E00117607 /* CoreDataManager.swift in Sources */,
 				FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */,
 				FA649B4824B8763200117607 /* SampleData.xcdatamodeld in Sources */,
 				FA649B3B24B5F09F00117607 /* InformationViewController.swift in Sources */,
+				FA6735AA24DDF54B00743B79 /* BarGraphStatisticsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,16 +466,18 @@
 		};
 		FAB11D7F24AA44680013A2D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0501E6D974930673D64DC82 /* Pods-DoItTimeFirstTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 85629WGS3Z;
 				INFOPLIST_FILE = DoItTimeFirstTest/supportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = macbook.DoItTimeFirstTest;
+				PRODUCT_BUNDLE_IDENTIFIER = macbook.DoItTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -421,16 +486,18 @@
 		};
 		FAB11D8024AA44680013A2D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CCC6FF0B61A14AECEC5259A /* Pods-DoItTimeFirstTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 85629WGS3Z;
 				INFOPLIST_FILE = DoItTimeFirstTest/supportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = macbook.DoItTimeFirstTest;
+				PRODUCT_BUNDLE_IDENTIFIER = macbook.DoItTime;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

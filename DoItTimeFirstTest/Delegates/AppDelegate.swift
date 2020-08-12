@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UINavigationBar.appearance().tintColor = .black
-        UINavigationBar.appearance().barTintColor = .purple
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
-        
+//        UINavigationBar.appearance().tintColor = .black
+//        UINavigationBar.appearance().barTintColor = .darkGray
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
+//
         return true
     }
     
@@ -34,9 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
-
-    
-    
 
 }
 

@@ -31,13 +31,17 @@ class ActivityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         startButton.isHidden = false
         stopButton.isHidden = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        timer?.invalidate()
+        timer = nil
+        startButton.isHidden = false
+        stopButton.isHidden = true
+        timerCount = 0
         nameActivityLabel?.text = nil
     }
     
@@ -74,24 +78,22 @@ extension ActivityTableViewCell {
         
     }
     @objc func updateTimer() { timerCount += 1 }
-}
-//MARK: - Public Func
-extension ActivityTableViewCell {
     
-    func preparePersonalCell(_ task: Purpose) {
-        personalCell = task
-    }
-    
-    func prepareNameForCell(text: String?) {
-        nameActivityLabel?.text = text
-    }
-    
-    func setAwakeTimes(timeCount: Int64) {
+   private func setAwakeTimes(timeCount: Int64) {
         timerCount = timeCount
         if timeCount > 0 {
             startButton.isHidden = true
             stopButton.isHidden = false
             startTimer()
         }
+    }
+}
+//MARK: - Public Func
+extension ActivityTableViewCell {
+    
+    func preparePersonalCell(_ task: Purpose) {
+        personalCell = task
+        nameActivityLabel?.text = task.name
+        setAwakeTimes(timeCount: task.startTime)
     }
 }

@@ -78,13 +78,13 @@ extension CoreDataManager {
     
     func updateTime(_ task: Purpose, newTime: Int64) {
         
-        let dataObject = TimeData(context: viewContext)
-        dataObject.date = Date()
-        dataObject.time = newTime
+        let dateObject = TimeData(context: viewContext)
+        dateObject.date = Date()
+        dateObject.timeCounter = newTime
         
-        let purposes = task.time?.mutableCopy() as? NSMutableOrderedSet
-        purposes?.add(dataObject)
-        task.time = purposes
+        let newTimeForTask = task.time?.mutableCopy() as? NSMutableOrderedSet
+        newTimeForTask?.add(dateObject)
+        task.time = newTimeForTask
         
         saveContext()
     }

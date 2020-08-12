@@ -34,9 +34,7 @@ class ToDoBarTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ActivityTableViewCell
         
-        cell.prepareNameForCell(text: purposes[indexPath.row].name)
         cell.preparePersonalCell(purposes[indexPath.row])
-        cell.setAwakeTimes(timeCount: purposes[indexPath.row].startTime)
         
         return cell
     }

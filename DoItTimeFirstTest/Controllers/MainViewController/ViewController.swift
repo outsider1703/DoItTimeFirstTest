@@ -24,5 +24,17 @@ class ViewController: UIViewController {
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "statisticsTabBar" {
+            let tabBarController = segue.destination as! UITabBarController
+            let pieChartVC = tabBarController.viewControllers?.first as! PieGraphStatistics
+            let barChartVC = tabBarController.viewControllers?.last as! BarGraphStatistics
+            
+            pieChartVC.tabBarItem.image = UIImage(systemName: "chart.pie.fill",
+                                                  withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
+            barChartVC.tabBarItem.image = UIImage(systemName: "chart.bar.fill",
+                                                  withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+        }
+    }
     
 }

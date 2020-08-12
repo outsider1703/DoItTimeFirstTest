@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4PL-0N-2tp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4PL-0N-2tp">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,34 +7,37 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--PieChart-->
+        <!--Pie Stat-->
         <scene sceneID="myi-Bk-WfW">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="vXr-B0-5WW" customClass="GraphStatistics" customModule="DoItTimeFirstTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Pie Stat" modalPresentationStyle="fullScreen" id="vXr-B0-5WW" customClass="PieGraphStatistics" customModule="DoItTimeFirstTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w4a-9T-TQy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1a-hf-7hi">
-                                <rect key="frame" x="16" y="44" width="343" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-d3-01L">
+                                <rect key="frame" x="16" y="52" width="343" height="32"/>
+                                <segments>
+                                    <segment title="Day"/>
+                                    <segment title="Week"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
+                                </segments>
+                                <connections>
+                                    <action selector="selectStatistics:" destination="vXr-B0-5WW" eventType="valueChanged" id="9Hp-7a-hD7"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="VQ0-U3-x8I" firstAttribute="trailing" secondItem="f1a-hf-7hi" secondAttribute="trailing" constant="16" id="WRK-Ey-l3J"/>
-                            <constraint firstItem="f1a-hf-7hi" firstAttribute="top" secondItem="VQ0-U3-x8I" secondAttribute="top" id="mgz-M6-siG"/>
-                            <constraint firstItem="f1a-hf-7hi" firstAttribute="leading" secondItem="VQ0-U3-x8I" secondAttribute="leading" constant="16" id="mmN-qI-uMx"/>
+                            <constraint firstItem="SLn-d3-01L" firstAttribute="leading" secondItem="VQ0-U3-x8I" secondAttribute="leading" constant="16" id="c3i-Iv-Mm7"/>
+                            <constraint firstItem="SLn-d3-01L" firstAttribute="top" secondItem="VQ0-U3-x8I" secondAttribute="top" constant="8" id="cQs-8g-Xh6"/>
+                            <constraint firstItem="VQ0-U3-x8I" firstAttribute="trailing" secondItem="SLn-d3-01L" secondAttribute="trailing" constant="16" id="jMb-Bx-sW6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VQ0-U3-x8I"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="PieChart" id="P6h-wa-5Gp"/>
-                    <navigationItem key="navigationItem" id="xBv-Ru-SnP"/>
-                    <connections>
-                        <outlet property="timeForAllAppLabel" destination="f1a-hf-7hi" id="YXK-bc-qF4"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Pie Stats" id="xBv-Ru-SnP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqb-x4-5gH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,23 +46,11 @@
         <!--BarChart-->
         <scene sceneID="wWa-Q4-UHw">
             <objects>
-                <viewController id="NJs-gA-II2" sceneMemberID="viewController">
+                <viewController id="NJs-gA-II2" customClass="BarGraphStatistics" customModule="DoItTimeFirstTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DGw-9h-l67">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6t-sd-IaD">
-                                <rect key="frame" x="143" y="311" width="89.5" height="45.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="R6t-sd-IaD" firstAttribute="centerY" secondItem="DGw-9h-l67" secondAttribute="centerY" id="ffm-Be-GGU"/>
-                            <constraint firstItem="R6t-sd-IaD" firstAttribute="centerX" secondItem="DGw-9h-l67" secondAttribute="centerX" id="jYN-Dv-FyK"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Wym-KY-Y90"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="BarChart" id="lcg-wm-axE"/>
@@ -86,7 +77,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Statistics"/>
                                 <connections>
-                                    <segue destination="F6M-WJ-WUT" kind="show" id="Krj-G0-0Ei"/>
+                                    <segue destination="F6M-WJ-WUT" kind="show" identifier="statisticsTabBar" id="Krj-G0-0Ei"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfy-es-9Cm">
@@ -97,15 +88,14 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="cHK-Vp-tAw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                </state>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Start"/>
                                 <connections>
                                     <segue destination="HsT-yh-kx0" kind="presentation" id="bfV-Cz-NyF"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="p9R-c5-iHz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2WC-cD-u1N"/>
                             <constraint firstItem="gfy-es-9Cm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Dx6-AN-bNx"/>
@@ -226,13 +216,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWi-UG-TW4">
-                                <rect key="frame" x="16" y="108" width="343" height="30"/>
+                                <rect key="frame" x="16" y="108" width="243" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="xUv-gW-gZe"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bnE-Jp-v2a">
-                                <rect key="frame" x="16" y="146" width="343" height="32"/>
+                                <rect key="frame" x="16" y="152" width="343" height="32"/>
                                 <segments>
                                     <segment title="Day"/>
                                     <segment title="Week"/>
@@ -244,23 +237,45 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time of choice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwF-N0-v3d">
-                                <rect key="frame" x="16" y="185" width="343" height="21"/>
+                                <rect key="frame" x="16" y="191" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plm-cZ-Uuj">
+                                <rect key="frame" x="329" y="108" width="30" height="44"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="addLostTime:" destination="Gi7-Bz-v7q" eventType="touchUpInside" id="wor-Va-Apy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whH-uT-eLP">
+                                <rect key="frame" x="291" y="108" width="30" height="44"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="26"/>
+                                <state key="normal" title="-"/>
+                                <connections>
+                                    <action selector="removeLostTime:" destination="Gi7-Bz-v7q" eventType="touchUpInside" id="ekg-my-efb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="bnE-Jp-v2a" firstAttribute="top" secondItem="dWi-UG-TW4" secondAttribute="bottom" constant="8" id="70z-Rf-O2q"/>
                             <constraint firstItem="bnE-Jp-v2a" firstAttribute="leading" secondItem="RZH-Qg-Ftf" secondAttribute="leading" constant="16" id="7j1-9B-koo"/>
-                            <constraint firstItem="dWi-UG-TW4" firstAttribute="leading" secondItem="RZH-Qg-Ftf" secondAttribute="leading" constant="16" id="D5O-uv-cN5"/>
-                            <constraint firstItem="dWi-UG-TW4" firstAttribute="top" secondItem="RZH-Qg-Ftf" secondAttribute="top" id="Rwv-e4-6AJ"/>
+                            <constraint firstItem="bnE-Jp-v2a" firstAttribute="top" secondItem="whH-uT-eLP" secondAttribute="bottom" id="8Vq-bn-e0A"/>
+                            <constraint firstItem="dWi-UG-TW4" firstAttribute="top" secondItem="RZH-Qg-Ftf" secondAttribute="top" id="D4F-j0-CUf"/>
+                            <constraint firstItem="Plm-cZ-Uuj" firstAttribute="leading" secondItem="whH-uT-eLP" secondAttribute="trailing" constant="8" id="Dm8-Ol-fgU"/>
+                            <constraint firstItem="bnE-Jp-v2a" firstAttribute="top" secondItem="Plm-cZ-Uuj" secondAttribute="bottom" id="OHP-5F-34D"/>
+                            <constraint firstItem="RZH-Qg-Ftf" firstAttribute="trailing" secondItem="Plm-cZ-Uuj" secondAttribute="trailing" constant="16" id="QMK-Ev-mpZ"/>
                             <constraint firstItem="mwF-N0-v3d" firstAttribute="top" secondItem="bnE-Jp-v2a" secondAttribute="bottom" constant="8" id="TEv-qW-tIA"/>
+                            <constraint firstItem="Plm-cZ-Uuj" firstAttribute="top" secondItem="RZH-Qg-Ftf" secondAttribute="top" id="VND-gb-i09"/>
                             <constraint firstItem="mwF-N0-v3d" firstAttribute="leading" secondItem="RZH-Qg-Ftf" secondAttribute="leading" constant="16" id="Zus-PL-KPr"/>
+                            <constraint firstItem="whH-uT-eLP" firstAttribute="top" secondItem="RZH-Qg-Ftf" secondAttribute="top" id="brb-mX-rq0"/>
                             <constraint firstItem="RZH-Qg-Ftf" firstAttribute="trailing" secondItem="bnE-Jp-v2a" secondAttribute="trailing" constant="16" id="cFc-f1-M0M"/>
+                            <constraint firstItem="bnE-Jp-v2a" firstAttribute="top" secondItem="dWi-UG-TW4" secondAttribute="bottom" constant="8" id="d0e-Fe-XyA"/>
+                            <constraint firstItem="whH-uT-eLP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dWi-UG-TW4" secondAttribute="trailing" constant="32" id="rFE-yf-BLX"/>
                             <constraint firstItem="RZH-Qg-Ftf" firstAttribute="trailing" secondItem="mwF-N0-v3d" secondAttribute="trailing" constant="16" id="ttz-VH-n4p"/>
-                            <constraint firstItem="RZH-Qg-Ftf" firstAttribute="trailing" secondItem="dWi-UG-TW4" secondAttribute="trailing" constant="16" id="xtP-Hw-EJH"/>
+                            <constraint firstItem="dWi-UG-TW4" firstAttribute="leading" secondItem="RZH-Qg-Ftf" secondAttribute="leading" constant="16" id="wYf-Zz-rtg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RZH-Qg-Ftf"/>
                     </view>
