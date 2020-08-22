@@ -12,7 +12,7 @@ import Charts
 
 class PieGraphStatistics: UIViewController, ChartViewDelegate {
     
-    var purposes: [Purpose] = []
+   private var purposes: [Purpose] = []
     
     var pieChartView: PieChartView = {
         let pieChart = PieChartView()
@@ -66,7 +66,6 @@ extension PieGraphStatistics {
                 let calendar = Calendar.current
                 var dateComponentsForObject: DateComponents?
                 var dateComponentsForDate: DateComponents?
-                //print(calendar.weekdaySymbols)
                 switch indexAtSegment {
                 case 1:
                     dateComponentsForObject = calendar.dateComponents([.weekOfMonth, .month, .year], from: (timeCountInTask?.date)!)
@@ -91,7 +90,6 @@ extension PieGraphStatistics {
                 taskEntries.append(entrie)
             }
         }
-        
         creatingAndReceivingSet(entries: taskEntries)
     }
     

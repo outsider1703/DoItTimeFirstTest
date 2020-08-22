@@ -39,6 +39,11 @@ class ToDoBarTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        cellByIndex = purposes[indexPath.row]
+        performSegue(withIdentifier: "goToInfo", sender: nil)
+    }
+    
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let archiveAction = swipeForArchive(at: indexPath)
         return UISwipeActionsConfiguration(actions: [archiveAction])
@@ -62,6 +67,9 @@ extension ToDoBarTableViewController {
         let action = UIContextualAction(style: .normal, title: "Archive") { (_, _, completion) in
             
             let task = self.purposes[indexPath.row]
+            
+            CoreDataManager.shared.addToArchive(task: task)
+            
             self.purposes.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             CoreDataManager.shared.delete(task)
@@ -86,6 +94,18 @@ extension ToDoBarTableViewController {
     private func goToInformationVC(_ indexPath: IndexPath) {
         performSegue(withIdentifier: "goToInfo", sender: indexPath)
     }
+    
+    private func getStartTimeForIndex() {
+          for task in purposes {
+              if task.startDate != nil {
+                  
+                  let dateStart = task.startDate!
+                  let awakeTime = -Int(dateStart.timeIntervalSinceNow)
+                  
+                  CoreDataManager.shared.saveStartTime(task, awakeTime: Int64(awakeTime))
+              }
+          }
+      }
 }
 
 //MARK: - Navigation
@@ -93,8 +113,9 @@ extension ToDoBarTableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToInfo" {
             guard let cell = cellByIndex else { return }
-            let infoVC = segue.destination as! InformationViewController
-            infoVC.swipeCellInfo = cell
+            let navigationVC = segue.destination as! UINavigationController
+            let infoVC = navigationVC.viewControllers.first as! InformationViewController
+            infoVC.swipeCellForInfo = cell
             cellByIndex = nil
         }        
     }
@@ -140,20 +161,3 @@ extension ToDoBarTableViewController {
         showAlert(title: "New Goals")
     }
 }
-
-extension ToDoBarTableViewController {
-    private func getStartTimeForIndex() {
-        
-        for task in purposes {
-            if task.startDate != nil {
-                
-                let dateStart = task.startDate!
-                let awakeTime = -Int(dateStart.timeIntervalSinceNow)
-                
-                CoreDataManager.shared.saveStartTime(task, awakeTime: Int64(awakeTime))
-            }
-        }
-    }
-}
-
-

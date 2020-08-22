@@ -27,13 +27,20 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "statisticsTabBar" {
             let tabBarController = segue.destination as! UITabBarController
-            let pieChartVC = tabBarController.viewControllers?.first as! PieGraphStatistics
-            let barChartVC = tabBarController.viewControllers?.last as! BarGraphStatistics
-            
-            pieChartVC.tabBarItem.image = UIImage(systemName: "chart.pie.fill",
-                                                  withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
-            barChartVC.tabBarItem.image = UIImage(systemName: "chart.bar.fill",
-                                                  withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+            for controller in tabBarController.viewControllers! {
+                if let pieChartVC = controller as? PieGraphStatistics {
+                    pieChartVC.tabBarItem.image = UIImage(systemName: "chart.pie.fill",
+                                                          withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
+                }
+                if let barChartVC = controller as? BarGraphStatistics {
+                    barChartVC.tabBarItem.image = UIImage(systemName: "chart.bar.fill",
+                                                          withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+                }
+                if let archiveVC = controller as? ArchivePurposeTableViewController {
+                    archiveVC.tabBarItem.image = UIImage(systemName: "archivebox.fill",
+                                                         withConfiguration: UIImage.SymbolConfiguration(weight: .medium))
+                }
+            }
         }
     }
     

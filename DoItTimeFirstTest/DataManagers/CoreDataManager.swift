@@ -39,7 +39,7 @@ class CoreDataManager {
     }
 }
 
-//MARK: - Core Data Function
+//MARK: - Core Data Functions
 extension CoreDataManager {
     
     func getAnObject() -> Purpose? {
@@ -111,6 +111,53 @@ extension CoreDataManager {
     
     func deleteStartTime(_ task: Purpose) {
         task.startTime = 0
+        saveContext()
+    }
+}
+//MARK: - Core Data Function for Archive
+extension CoreDataManager {
+    func addToArchive(task: Purpose) {
+        
+        guard let entityDescription = NSEntityDescription.entity(
+            forEntityName: "ArchivePurpose",
+            in: viewContext
+            ) else { return }
+        guard let archiveTask = NSManagedObject(
+            entity: entityDescription,
+            insertInto: viewContext
+            ) as? ArchivePurpose else { return }
+        
+        archiveTask.name = task.name
+        
+        let newSetForArchive = archiveTask.time?.mutableCopy() as? NSMutableOrderedSet
+        guard let time = task.time else { return }
+        
+        for object in time {
+            guard let timeDataOmbject = object as? TimeData else { return }
+            let timeForArchiveTask = ArchiveTimeData(context: viewContext)
+            timeForArchiveTask.timeCounter = timeDataOmbject.timeCounter
+            timeForArchiveTask.date = timeDataOmbject.date
+            newSetForArchive?.add(timeForArchiveTask)
+        }
+        archiveTask.time = newSetForArchive
+        
+        saveContext()
+    }
+    
+    func fetchDataForArchive() -> [ArchivePurpose] {
+        let fetchRequest: NSFetchRequest<ArchivePurpose> = ArchivePurpose.fetchRequest()
+        var archivePurposes = [ArchivePurpose]()
+        
+        do {
+            archivePurposes = try viewContext.fetch(fetchRequest)
+        } catch let error {
+            print(error)
+        }
+        return archivePurposes
+    }
+    
+    func delete(_ deleteTask: ArchivePurpose) {
+        viewContext.delete(deleteTask)
         saveContext()
     }
 }

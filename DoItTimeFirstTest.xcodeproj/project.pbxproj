@@ -15,6 +15,7 @@
 		FA649B4824B8763200117607 /* SampleData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA649B4624B8763200117607 /* SampleData.xcdatamodeld */; };
 		FA649B4A24B8774E00117607 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA649B4924B8774E00117607 /* CoreDataManager.swift */; };
 		FA6735AA24DDF54B00743B79 /* BarGraphStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6735A924DDF54B00743B79 /* BarGraphStatisticsVC.swift */; };
+		FA6A156124E4A826002E7B31 /* ArchivePurposeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6A156024E4A826002E7B31 /* ArchivePurposeTableViewController.swift */; };
 		FA76765A24C24D82002396FC /* PieGraphStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA76765924C24D82002396FC /* PieGraphStatisticsVC.swift */; };
 		FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */; };
 		FAB11D7024AA44630013A2D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB11D6F24AA44630013A2D5 /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 		FA649B4724B8763200117607 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		FA649B4924B8774E00117607 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FA6735A924DDF54B00743B79 /* BarGraphStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphStatisticsVC.swift; sourceTree = "<group>"; };
+		FA6A156024E4A826002E7B31 /* ArchivePurposeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivePurposeTableViewController.swift; sourceTree = "<group>"; };
 		FA76765924C24D82002396FC /* PieGraphStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieGraphStatisticsVC.swift; sourceTree = "<group>"; };
 		FAB11D6A24AA44630013A2D5 /* DoItTimeFirstTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoItTimeFirstTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB11D6D24AA44630013A2D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				FA649B3524B4C58200117607 /* MainViewController */,
 				FA649B3324B4C50300117607 /* ToDoBarTabelVC */,
 				FA76765824C24C00002396FC /* StatisticsControllers */,
+				FA6A156024E4A826002E7B31 /* ArchivePurposeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC303FE24C728AA0040DFBC /* Test Model.swift in Sources */,
+				FA6A156124E4A826002E7B31 /* ArchivePurposeTableViewController.swift in Sources */,
 				FAB11D7224AA44630013A2D5 /* ViewController.swift in Sources */,
 				FAB11D6E24AA44630013A2D5 /* AppDelegate.swift in Sources */,
 				FA76765A24C24D82002396FC /* PieGraphStatisticsVC.swift in Sources */,

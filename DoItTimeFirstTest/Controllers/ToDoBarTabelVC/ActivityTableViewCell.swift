@@ -75,11 +75,10 @@ extension ActivityTableViewCell {
                                      selector: #selector(updateTimer),
                                      userInfo: nil,
                                      repeats: true)
-        
     }
     @objc func updateTimer() { timerCount += 1 }
     
-   private func setAwakeTimes(timeCount: Int64) {
+    private func setAwakeTimes(timeCount: Int64) {
         timerCount = timeCount
         if timeCount > 0 {
             startButton.isHidden = true
@@ -95,5 +94,11 @@ extension ActivityTableViewCell {
         personalCell = task
         nameActivityLabel?.text = task.name
         setAwakeTimes(timeCount: task.startTime)
+    }
+    
+    func prepareSleep(time: Int64) {
+        if timerCount > 0 {
+            timerCount += time
+        }
     }
 }
